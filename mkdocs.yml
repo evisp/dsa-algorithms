@@ -3,18 +3,43 @@ site_url: https://evisp.github.io/dsa-algorithms/
 site_author: Evis Plaku
 site_description: Data Structures & Algorithms in Java (2nd year bachelor)
 
-
 repo_name: evisp/dsa-algorithms
 repo_url: https://github.com/evisp/dsa-algorithms
 
 theme:
   name: material
+
+  palette:
+    # Auto + toggle (professional default)
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  font:
+    text: Roboto
+    code: Roboto Mono
+
   features:
     - navigation.tabs
     - navigation.sections
     - navigation.top
+    - navigation.path
     - search.highlight
+    - search.share
     - content.code.copy
+    - content.tabs.link
+
   icon:
     repo: fontawesome/brands/github
 
@@ -39,6 +64,15 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/evisp
+
+copyright: >
+  Copyright © 2026 Evis Plaku
 
 nav:
   - Home: index.md
