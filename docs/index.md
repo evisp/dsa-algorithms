@@ -1,4 +1,4 @@
-![DSA Algorithms banner](../assets/banner.png){ width="100%" }
+![DSA Algorithms banner](https://i.imgur.com/xoLA5Z1.png){ width="100%" }
 
 # Data Structures & Algorithms (Java)
 
