@@ -22,6 +22,7 @@ This block sets the baseline for the rest of the course: how to describe algorit
 
 ## Before moving on
 You’re ready for the next block when you can:
+
 - Choose a data structure and justify the choice in one sentence.
 - Give a Big-O estimate for a simple loop/nested loop/recursion.
 - Spot obvious inefficiencies (extra passes, unnecessary copying, repeated work).
