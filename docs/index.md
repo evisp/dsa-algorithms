@@ -25,11 +25,11 @@ Algorithms and data structures help you write programs that stay correct and fas
   [Open →](foundations/index.md)
 
 - :material-vector-line: **Linear structures**  
-  Arrays, linked lists, stacks, queues—core building blocks you’ll use everywhere.  
+  Arrays, linked lists, stacks, queues-core building blocks you’ll use everywhere.  
   [Open →](linear/index.md)
 
 - :material-lightbulb-on-outline: **Core techniques**  
-  Searching, sorting, recursion—patterns that keep returning in different problems.  
+  Searching, sorting, recursion-patterns that keep returning in different problems.  
   [Open →](techniques/index.md)
 
 - :material-graph-outline: **Non-linear structures**  
@@ -45,12 +45,12 @@ Algorithms and data structures help you write programs that stay correct and fas
 <div class="card" markdown style="grid-column: 1 / -1">
 
 :material-rocket-launch-outline: **Course project (3 sprints)**  
-A longer task broken into three sprints with clear deliverables and regular feedback.
+A substantial project where you apply the course concepts in three sprints-each with clear goals, practical deliverables, and feedback to help you improve as you build.
 
 [Overview →](project/index.md) ·
 [Sprint 1 →](project/sprint-1.md) ·
 [Sprint 2 →](project/sprint-2.md) ·
-[Sprint 3 →](project/sprint-3.md)
+[Sprint 3](project/sprint-3.md)
 
 </div>
 
@@ -60,7 +60,7 @@ A longer task broken into three sprints with clear deliverables and regular feed
 This course rewards steady work more than last‑minute effort.
 
 - Keep a small notebook (digital or paper) of ideas, mistakes, and patterns you notice.
-- When you get stuck, write down what you tried and what failed—then ask a precise question.
+- When you get stuck, write down what you tried and what failed-then ask a precise question.
 - Aim for understanding first, speed later; clean solutions come from clear thinking.
 
 !!! note "A good week"
