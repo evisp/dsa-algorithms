@@ -40,6 +40,7 @@ An **algorithm** is a clear set of steps for solving a problem: you give it some
 What matters most is that the steps are specific enough that two different people could implement them and still get the same result.
 
 A useful checklist:
+
 - Input: What information do we get?
 - Output: What exactly must we return/print?
 - Steps: Are they precise and unambiguous?
@@ -52,6 +53,7 @@ A useful checklist:
     **Output:** The next task to do (or “no task left”).
 
     **Algorithm idea (plain steps):**
+
     1) Remove tasks that are already completed.
     2) Pick the task with the earliest deadline.
     3) If there’s a tie, pick the smaller estimated time.
@@ -62,12 +64,14 @@ A useful checklist:
 A good algorithm is not just something that works once. It should be predictable, easy to follow, and reliable across different valid inputs.
 
 We want algorithms that are:
+
 - **Deterministic**: Same input → same output.
 - **Unambiguous**: No “magic” steps; every step is clearly defined.
 - **Correct**: Works for all valid inputs, not only the examples you tested.
 - **Scalable**: Still behaves reasonably when the input becomes large.
 
 Concrete details that improve “goodness”:
+
 - Define tie-break rules (what happens when two values are equal?).
 - Define empty-input behavior (what do you return when there is nothing to process?).
 - Define what counts as “valid input” (e.g., are negative prices allowed?).
@@ -89,6 +93,7 @@ Think of algorithms like instructions: they should be easy to follow and hard to
     Keep it simple. Simple solutions are easier to verify, test, and maintain.
 
 Practical rules (with a purpose):
+
 - **Pareto principle (80/20)**: Focus effort where it matters most; don’t micro-optimize early.
 - **Murphy’s law**: Expect failures and weird inputs; design and test edge cases on purpose.
 - **Newton’s third law (trade-offs)**: Speed vs memory, simplicity vs performance—choose intentionally.
@@ -100,6 +105,7 @@ Practical rules (with a purpose):
 Edge cases are not “extra”. They are part of the problem.
 
 When you design an algorithm, always ask: “What happens if…?”
+
 - The input is empty?
 - The input has one element?
 - Values repeat (ties happen)?
@@ -121,6 +127,7 @@ Use this sequence when you solve tasks in this course. It keeps you focused and 
 7. Only then implement in Java.
 
 Pseudocode standard for this course:
+
 - Use plain language + structured control flow (`for`, `while`, `if`).
 - Don’t worry about perfect syntax—worry about clarity.
 
@@ -129,6 +136,7 @@ Pseudocode standard for this course:
 Even in week 1, you should start noticing whether a solution will scale when the input grows.
 
 A good first check is to ask what your algorithm does to the data:
+
 - Does it touch each element once (or a small constant number of times)?
 - Does it repeat work many times (nested loops, re-checking earlier elements)?
 - Does it create extra collections/copies that cost memory?
@@ -137,6 +145,7 @@ A good first check is to ask what your algorithm does to the data:
     If the input becomes 10× bigger, will your approach still feel reasonable?
 
 Quick “week 1” signals:
+
 - A loop inside a loop over the same list is a sign you might be re-scanning too much.
 - Sorting is often fine, but sorting *inside* a loop is usually a red flag.
 - If you keep copying arrays/lists, ask if one pass (or one helper structure) is enough.
@@ -151,6 +160,7 @@ These examples show what “clear” looks like: define assumptions, write simpl
 **Task**: given a list of people’s heights, determine the tallest height (and optionally who it belongs to).
 
 Before you write steps, decide:
+
 - What should happen if the list is empty? (Return a special value? Throw an error?)
 - If multiple people share the max height, do you return the first one, the last one, or all?
 

@@ -45,6 +45,7 @@ theme:
 
 plugins:
   - search
+  - typeset
   - minify:
       minify_html: true
 
