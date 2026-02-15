@@ -13,15 +13,15 @@ This first lecture is about building good habits: describing solutions clearly, 
 
 - :material-file-pdf-box: __Slides (PDF)__  
   Download and skim before class.  
-  [Open slides →](REPLACE_WITH_GITHUB_PDF_LINK){ .md-button .md-button--primary }
+  [Open slides →](practice.md){ .md-button .md-button--primary }
 
 - :material-youtube: __Video 1 (short)__  
   Core ideas recap.  
-  [Watch →](REPLACE_WITH_YOUTUBE_LINK_1){ .md-button }
+  [Watch →](practice.md){ .md-button }
 
 - :material-youtube: __Video 2 (short)__  
   Worked example walkthrough.  
-  [Watch →](REPLACE_WITH_YOUTUBE_LINK_2){ .md-button }
+  [Watch →](practice.md){ .md-button }
 
 - :material-pencil-check-outline: __Practice__  
   Do these after reading the notes.  
