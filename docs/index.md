@@ -1,8 +1,10 @@
+# Data Structures & Algorithms
+
 ![DSA Algorithms banner](https://i.imgur.com/xoLA5Z1.png){ width="100%" }
 
-# Data Structures & Algorithms (Java)
+Algorithms and data structures help you write programs that stay correct and fast as the input gets bigger. They teach you how to store data well and how to solve problems step by step, instead of guessing.
 
-Welcome. This site contains lecture notes, slides, and practice tasks for the course.
+*Even in the era of intelligent systems*, these fundamentals matter, probably more than ever: they help you check results, understand trade‑offs, and build solutions you can explain and trust. 
 
 !!! info "Quick links"
     - Start here: [Foundations](foundations/index.md)
@@ -11,37 +13,48 @@ Welcome. This site contains lecture notes, slides, and practice tasks for the co
 
 ## How to use this site
 - Use the top menu to jump between the 4 blocks.
-- In each lecture page you’ll find two sections: **Slides** (PDF) and **Practice tasks** (problems to solve).
-- Before labs/exercises, skim the lecture page and try the first practice tasks.
+- Each lecture page has **Slides** (PDF) and **Practice tasks**.
+- Before class, skim the lecture page and try 1-2 tasks.
 
 ## Course blocks
-### 1) Foundations
-- [Overview](foundations/index.md)
-- [Algorithm fundamentals](foundations/algorithm-fundamentals/index.md)
-- [Algorithm analysis](foundations/algorithm-analysis/index.md)
 
-### 2) Linear structures
-- [Overview](linear/index.md)
-- [Arrays & linked lists](linear/arrays-linkedlists/index.md)
-- [Stacks & queues](linear/stacks-queues/index.md)
+<div class="grid cards" markdown>
 
-### 3) Core techniques
-- [Overview](techniques/index.md)
-- [Searching & sorting](techniques/searching-sorting/index.md)
-- [Recursion](techniques/recursion/index.md)
+- :material-school-outline: **Foundations**  
+  What an algorithm is, how to describe steps clearly, and how to reason about solutions.  
+  [Open →](foundations/index.md)
 
-### 4) Non-linear structures
-- [Overview](nonlinear/index.md)
-- [Trees](nonlinear/trees/index.md)
-- [Graphs](nonlinear/graphs/index.md)
+- :material-vector-line: **Linear structures**  
+  Arrays, linked lists, stacks, queues—core building blocks you’ll use everywhere.  
+  [Open →](linear/index.md)
 
-## Project (3 sprints)
-The course project is split into three sprints with clear deliverables.
+- :material-lightbulb-on-outline: **Core techniques**  
+  Searching, sorting, recursion—patterns that keep returning in different problems.  
+  [Open →](techniques/index.md)
 
-- [Project overview](project/index.md)
-- [Sprint 1](project/sprint-1.md)
-- [Sprint 2](project/sprint-2.md)
-- [Sprint 3](project/sprint-3.md)
+- :material-graph-outline: **Non-linear structures**  
+  Trees and graphs, plus fundamental traversal ideas.  
+  [Open →](nonlinear/index.md)
+
+</div>
+
+## Project
+
+<div class="grid" markdown>
+
+<div class="card" markdown style="grid-column: 1 / -1">
+
+:material-rocket-launch-outline: **Course project (3 sprints)**  
+A longer task broken into three sprints with clear deliverables and regular feedback.
+
+[Overview →](project/index.md) ·
+[Sprint 1 →](project/sprint-1.md) ·
+[Sprint 2 →](project/sprint-2.md) ·
+[Sprint 3 →](project/sprint-3.md)
+
+</div>
+
+</div>
 
 ## How to succeed here
 This course rewards steady work more than last‑minute effort.
@@ -52,3 +65,6 @@ This course rewards steady work more than last‑minute effort.
 
 !!! note "A good week"
     Read the lecture notes → solve a few tasks → review your solution → only then look at model answers.
+
+
+![Hero image](https://i.imgur.com/QPx4l4U.png)
