@@ -1,8 +1,5 @@
-# Title
+# Page Under Construction
 
-## Slides
-- (add link to PDF in this folder)
+This page is under construction. Our algorithm is still drinking coffee and arranging its steps.
 
-## Practice tasks
-- Task 1
-- Task 2
+![Under Construction](https://i.imgur.com/g7ylRzq.png)

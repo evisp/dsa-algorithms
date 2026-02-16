@@ -85,6 +85,8 @@ nav:
       - Overview: foundations/index.md
       - Algorithm fundamentals: foundations/algorithm-fundamentals/index.md
       - Algorithm analysis: foundations/algorithm-analysis/index.md
+      - Practice your skills: foundations/practice.md
+
 
   - Linear structures:
       - Overview: linear/index.md

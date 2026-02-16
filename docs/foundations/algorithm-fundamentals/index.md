@@ -15,15 +15,15 @@ This first lecture is about building good habits: describing solutions clearly, 
   Download and skim before class.  
   [Open slides →](practice.md){ .md-button .md-button--primary }
 
-- :material-youtube: __Video 1 (short)__  
+- :material-youtube: __What is an Algorithm__  
   Core ideas recap.  
-  [Watch →](practice.md){ .md-button }
+  [Watch →](https://www.youtube.com/watch?v=l_iE5Jq23Qw){ .md-button }
 
-- :material-youtube: __Video 2 (short)__  
+- :material-youtube: __What makes an Algorithm Good__  
   Worked example walkthrough.  
-  [Watch →](practice.md){ .md-button }
+  [Watch →](youtube.com/watch?v=4pIHgJafags&feature=youtu.be){ .md-button }
 
-- :material-pencil-check-outline: __Practice__  
+- :material-notebook-outline: __Practice__  
   Do these after reading the notes.  
   [Go to practice →](practice.md){ .md-button .md-button--primary }
 
@@ -54,10 +54,10 @@ A useful checklist:
 
     **Algorithm idea (plain steps):**
 
-    1) Remove tasks that are already completed.
-    2) Pick the task with the earliest deadline.
-    3) If there’s a tie, pick the smaller estimated time.
-    4) Return that task.
+    1. Remove tasks that are already completed.
+    2. Pick the task with the earliest deadline.
+    3. If there’s a tie, pick the smaller estimated time.
+    4. Return that task.
 
 
 ## 2) What makes an algorithm “good”?
@@ -117,6 +117,8 @@ Common good practice: decide the behavior *first* (return value, error, or speci
 
 ## 5) A small workflow: problem → steps → code
 Use this sequence when you solve tasks in this course. It keeps you focused and prevents “random coding”.
+
+![Workflow](https://i.imgur.com/MMlgTpq.jpeg)
 
 1. Restate the problem in one sentence (what must be solved?).
 2. List inputs and outputs (types, constraints, and empty-input behavior).
