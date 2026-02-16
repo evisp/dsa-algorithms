@@ -17,11 +17,11 @@ This first lecture is about building good habits: describing solutions clearly, 
 
 - :material-youtube: __What is an Algorithm__  
   Core ideas recap.  
-  [Watch →](https://www.youtube.com/watch?v=l_iE5Jq23Qw){ .md-button }
+  [Watch →](https://youtu.be/l_iE5Jq23Qw?si=q3QnTKSqkQW0udLs){ .md-button }
 
 - :material-youtube: __What makes an Algorithm Good__  
   Worked example walkthrough.  
-  [Watch →](youtube.com/watch?v=4pIHgJafags&feature=youtu.be){ .md-button }
+  [Watch →](https://youtu.be/4pIHgJafags?si=Z9u97IQ-OJ-njlw2){ .md-button }
 
 - :material-notebook-outline: __Practice__  
   Do these after reading the notes.  
