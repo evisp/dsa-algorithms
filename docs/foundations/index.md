@@ -13,19 +13,24 @@ This block sets the baseline for the rest of the course: how to describe algorit
 !!! tip "How to study (simple routine)"
     Read the lecture notes → solve a small set of tasks → explain your solution out loud (or in writing) → then improve it.
 
-## Lectures
+## Key Topics
 
 <div class="grid cards" markdown>
 
 - :material-compass-outline: **Algorithm fundamentals**  
   What an algorithm is, how to write clear steps, and how to think about edge cases.  
-  [Open →](algorithm-fundamentals/index.md)
+  [Open →](alg-foundations.md){ .md-button .md-button--primary }
 
 - :material-timer-sand: **Algorithm analysis**  
-  A first structured way to compare solutions (time, space, and trade-offs).  
-  [Open →](algorithm-analysis/index.md)
+  A structured way to compare solutions (time, space, and trade-offs).  
+  [Open →](alg-complexity.md){ .md-button .md-button--primary }
+
+- :material-lightbulb-on-outline: **Algorithm strategies**  
+  How to choose a problem-solving approach (brute force, divide & conquer, greedy, DP, backtracking).  
+  [Open →](alg-strategies.md){ .md-button .md-button--primary }
 
 </div>
+
 
 ## Practice tasks (recommended routine)
 1. Solve 2–3 tasks without looking at notes.
@@ -36,7 +41,9 @@ This block sets the baseline for the rest of the course: how to describe algorit
     Don’t jump to the solution. First write: what you know, what you tried, and the smallest example where it fails. That’s usually enough to unblock you.
 
 ## Before moving on
+
 You’re ready for the next block when you can:
+
 - Choose a data structure and justify the choice in one sentence.
 - Estimate roughly how work grows for a simple loop, nested loop, or basic recursion.
 - Spot obvious inefficiencies (extra passes, unnecessary copying, repeated work).
