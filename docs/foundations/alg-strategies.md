@@ -18,7 +18,7 @@ Now that you can measure growth (time/space), the next skill is choosing a *stra
 
 - :material-youtube: __Algorithm design techniques__  
   Overview video.  
-  [Watch →](youtube.com/watch?v=y1ng8VmYMl8&feature=youtu.be){ .md-button }
+  [Watch →](https://www.youtube.com/watch?v=y1ng8VmYMl8&t=2s){ .md-button }
 
 - :material-notebook-outline: __Practice__  
   Do these after reading the notes.  

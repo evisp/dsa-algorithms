@@ -333,37 +333,301 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
 
 ## B) Algorithm analysis (complexity)
 
-This section will focus on: define \(n\), estimate time/space, and compare approaches.
+This section trains one skill: read code and explain how it **scales** as input size grows.
 
-### Exercise B1 — TODO (complexity reading)
+!!! info "What to write for each exercise"
+    - Define \(n\) (what does it count?).
+    - Time complexity (Big-O).
+    - Auxiliary space complexity (Big-O).
+    - One-sentence justification (e.g., “one pass over n items”, “nested loops over n”, “sort dominates”).
+
+!!! tip "Quick rules that usually work"
+    - One loop over \(n\) items → \(O(n)\)
+    - Two nested loops over \(n\) → \(O(n^2)\)
+    - Sort then scan → usually \(O(n \log n)\) (sorting dominates)
+    - Recursion: include call stack space (depth matters)
+
+!!! warning "Common mistake"
+    Don’t forget to say what \(n\) is, and don’t count the input array itself as “extra space” unless you explicitly say you are.
+
+
+### Exercise B1 — One pass (pseudocode)
+
 === "Task"
-    TODO: paste 2–3 pseudocode snippets and ask students to write:
+    For the pseudocode below, write:
     - What is \(n\)?
     - Time complexity (Big-O)
-    - Space complexity (Big-O)
+    - Auxiliary space complexity (Big-O)
     - One-sentence justification
 
+    ```text
+    total = 0
+    for each price p in prices:
+        total = total + p
+    return total
+    ```
+
 === "Hint"
-    TODO
+    - Start by defining \(n =\) number of items in `prices`.
+    - Count passes: this code touches each element once and uses only a few variables.
 
 === "Solution"
-    TODO (we’ll add later)
+    Solution withheld by “the algorithm” until after the lecture.
+
+
+### Exercise B2 — Pairwise comparisons (pseudocode)
+
+=== "Task"
+    For the pseudocode below, write:
+    - What is \(n\)?
+    - Time complexity (Big-O)
+    - Auxiliary space complexity (Big-O)
+    - One-sentence justification
+
+    ```text
+    count = 0
+    for i from 0 to n-1:
+        for j from i+1 to n-1:
+            if arr[i] == arr[j]:
+                count = count + 1
+    return count
+    ```
+
+=== "Hint"
+    - Focus on how many pairs \((i, j)\) the loops generate.
+    - The inner loop runs many times for each outer iteration (this is the “pairwise” pattern).
+
+=== "Solution"
+    Solution withheld by “the algorithm” until after the lecture.
+
+
+### Exercise B3 — Sort then scan (Java)
+
+=== "Task"
+    Analyze the function below:
+    - Define \(n\)
+    - Time complexity (Big-O)
+    - Auxiliary space complexity (Big-O) (assume the sort may use extra memory)
+    - One-sentence justification
+
+    ```java
+    int countAdjacentDuplicates(int[] arr) {
+        java.util.Arrays.sort(arr);
+
+        int count = 0;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] == arr[i - 1]) {
+                count++;
+            }
+        }
+        return count;
+    }
+    ```
+
+=== "Hint"
+    - Separate the work into two phases: sorting, then a single scan.
+    - Your final Big-O should be dominated by whichever phase grows faster.
+
+=== "Solution"
+    Solution withheld by “the algorithm” until after the lecture.
+
+### Exercise B4 — “Contains” inside a loop (Java)
+
+=== "Task"
+    Analyze the function below:
+    - Define \(n\) and \(m\) (you may need two variables)
+    - Time complexity (Big-O)
+    - Auxiliary space complexity (Big-O)
+    - One-sentence justification
+
+    ```java
+    java.util.List<String> keepNotCompleted(
+            java.util.List<String> tasks,
+            java.util.List<String> completed) {
+
+        java.util.List<String> result = new java.util.ArrayList<>();
+
+        for (String t : tasks) {
+            if (!completed.contains(t)) {
+                result.add(t);
+            }
+        }
+        return result;
+    }
+    ```
+
+=== "Hint"
+    - `completed.contains(t)` is itself a scan for a `List` (think: “how many checks per call?”).
+    - If `tasks` has \(n\) items and `completed` has \(m\) items, how many total checks can happen?
+
+=== "Solution"
+    Solution withheld by “the algorithm” until after the lecture.
+
+
+### Exercise B5 — Recursion growth (Python)
+
+=== "Task"
+    Analyze the function below:
+    - Define \(n\)
+    - Time complexity (Big-O)
+    - Auxiliary space complexity (Big-O)
+    - One-sentence justification
+
+    ```py
+    def fib(n):
+        if n < 0:
+            raise ValueError("n must be >= 0")
+        if n == 0:
+            return 0
+        if n == 1:
+            return 1
+        return fib(n - 1) + fib(n - 2)
+    ```
+
+=== "Hint"
+    - Draw a small call tree for `fib(5)` and notice repeated subproblems.
+    - Space: even if you don’t allocate arrays, recursion uses stack frames.
+
+=== "Solution"
+    Solution withheld by “the algorithm” until after the lecture.
+
+### Exercise B6 — Binary search (C)
+
+=== "Task"
+    Analyze the function below (assume the array is already sorted):
+    - Define \(n\)
+    - Time complexity (Big-O)
+    - Auxiliary space complexity (Big-O)
+    - One-sentence justification
+
+    ```c
+    int binary_search(int *a, int n, int target) {
+        int lo = 0;
+        int hi = n - 1;
+
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+
+            if (a[mid] == target) return mid;
+            if (a[mid] < target) lo = mid + 1;
+            else hi = mid - 1;
+        }
+        return -1;
+    }
+    ```
+
+=== "Hint"
+    - Each loop iteration cuts the remaining search range roughly in half.
+    - Track “how many times can you halve \(n\) before it becomes 1?”
+
+=== "Solution"
+    Solution withheld by “the algorithm” until after the lecture.
 
 
 
 ## C) Algorithm strategies
 
-This section will focus on: choosing a strategy (brute force vs D&C vs greedy vs DP vs backtracking) and justifying it.
+This section is about choosing a strategy and justifying it (not just coding).
+For each exercise:
+- Pick the best strategy (brute force / divide & conquer / greedy / DP / backtracking). 
+- Explain why in 1–2 sentences.
+- Write pseudocode with decisions + edge cases. 
 
-### Exercise C1 — TODO (pick a strategy)
+!!! info "How to work (recommended)"
+    - Spend 2 minutes agreeing on the strategy and the rules (ties, empty input, invalid input). 
+    - Spend 6–8 minutes writing pseudocode.
+    - Spend 2 minutes sharing with another group: “Why this strategy?” 
+
+!!! tip "What a good justification sounds like"
+    “This problem is about ____, and the constraint is ____, so ____ strategy fits.” 
+
+
+### Exercise C1 — Plan a study day
+
 === "Task"
-    TODO: give a problem and ask:
-    - Which strategy fits best?
-    - Why?
-    - Write pseudocode with decisions + edge cases
+    **Use case:** You have 1 free afternoon. You want to complete as many study tasks as possible before you must leave.
+
+    Each task has:
+    - `durationMinutes`
+    - `deadlineMinutesFromNow`
+
+    **Goal:** Choose the maximum number of tasks you can finish *before their deadlines*.
+
+    Example input:
+    - tasks = [(30, 60), (20, 25), (25, 40), (15, 20), (50, 55)]
+
+    Required decisions:
+    - What happens if tasks is empty?
+    - What if two tasks have the same deadline?
+    - Do you return the list of chosen tasks or just the count?
+
+    Your group must:
+    - Pick a strategy.
+    - Write pseudocode.
+    - Do one tiny dry run on the example.
 
 === "Hint"
-    TODO
+    - This feels like scheduling/selection: you’re choosing a subset under time constraints. 
+    - Try proposing a greedy rule as a group (e.g., earliest deadline first, shortest duration first) and challenge it with a counterexample.
 
 === "Solution"
-    TODO (we’ll add later)
+    Solution loading… (waiting for classroom wisdom)
+
+
+### Exercise C2 — Find a name fast
+
+=== "Task"
+    **Use case:** You have a sorted list of student IDs (ascending). You want to find whether a specific ID exists.
+
+    Example input:
+    - ids = [101, 105, 120, 150, 151, 200, 260, 300]
+    - target = 151
+
+    Required decisions:
+    - What if the list is empty?
+    - If the target appears multiple times, do you return any index, the first, or just true/false?
+
+    Your group must:
+    - Pick a strategy.
+    - Write pseudocode.
+    - State time + space complexity at a high level.
+
+=== "Hint"
+    - If the data is sorted, you can often cut the search space in half each step (divide & conquer idea). 
+    - Compare that to scanning from left to right (brute force baseline). 
+
+=== "Solution"
+    Solution will appear after the in-class walkthrough (stay curious).
+
+
+### Exercise C3 — Seating plan with constraints (Backtracking)
+
+=== "Task"
+    **Use case:** You are organizing a small event. You must assign people to seats in a row.
+    Some pairs cannot sit next to each other.
+
+    Example:
+    - people = ["A", "B", "C", "D"]
+    - forbiddenNeighbors = [("A","B"), ("C","D")]
+
+    **Goal:** Find any valid seating order, or return “no solution”.
+
+    Required decisions:
+    - If `people` is empty, what should you return?
+    - If there are multiple valid seatings, do you return the first found or all?
+    - How do you represent “no solution”?
+
+    Your group must:
+    - Pick a strategy.
+    - Write pseudocode using “choose → check → recurse → undo”.
+    - Give 2 edge cases.
+
+=== "Hint"
+    - This is a constraint-satisfaction problem: you build a partial arrangement and stop early when a constraint is violated. 
+    - The key is a fast “is this partial solution still valid?” check after each choice.
+
+=== "Solution"
+    Solution withheld by “the algorithm” until after the lecture.
+
+
+> Choose the strategy first; then the code becomes the easy part.
