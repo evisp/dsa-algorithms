@@ -83,8 +83,9 @@ nav:
 
   - Foundations:
       - Overview: foundations/index.md
-      - Algorithm fundamentals: foundations/algorithm-fundamentals/index.md
-      - Algorithm analysis: foundations/algorithm-analysis/index.md
+      - Algorithm fundamentals: foundations/alg-foundations.md
+      - Algorithm analysis: foundations/alg-complexity.md
+      - Algorithm strategies: foundations/alg-strategies.md 
       - Practice your skills: foundations/practice.md
 
 
