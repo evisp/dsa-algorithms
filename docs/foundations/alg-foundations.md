@@ -12,8 +12,8 @@ This first lecture is about building good habits: describing solutions clearly, 
 <div class="grid cards" markdown>
 
 - :material-file-pdf-box: __Slides (PDF)__  
-  Download and skim before class.  
-  [Open slides →](practice.md){ .md-button .md-button--primary }
+  Read and actively work through them. 
+  [Open slides →](https://github.com/evisp/dsa-algorithms/blob/main/docs/slides/1.Overview_AlgorithmFundamentals.pdf){ .md-button .md-button--primary }
 
 - :material-youtube: __What is an Algorithm__  
   Core ideas recap.  

@@ -13,12 +13,12 @@ Now that you can measure growth (time/space), the next skill is choosing a *stra
 <div class="grid cards" markdown>
 
 - :material-file-pdf-box: __Slides (PDF)__  
-  Download and skim before class.  
-  [Open slides →](practice.md){ .md-button .md-button--primary }
+  Read and actively work through them.  
+  [Open slides →](https://github.com/evisp/dsa-algorithms/blob/main/docs/slides/2.AlgorithmAnalysis_ProblemSolving.pdf){ .md-button .md-button--primary }
 
 - :material-youtube: __Algorithm design techniques__  
-  Short overview video (optional but helpful).  
-  [Watch →](practice.md){ .md-button }
+  Overview video.  
+  [Watch →](youtube.com/watch?v=y1ng8VmYMl8&feature=youtu.be){ .md-button }
 
 - :material-notebook-outline: __Practice__  
   Do these after reading the notes.  

@@ -88,14 +88,52 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
     - `heights = [165, 172, 180, 180, 158, 190, 175]`
 
     Required decisions:
-    - What should happen if the list is empty? (Return special value vs error)
-    - If multiple people share the maximum height, do you return the first one, the last one, or all?
+    - Empty list: return a special value or error (choose one and write it down).
+    - Ties: if multiple people share the max height, choose a rule (first, last, or all).
 
-=== "Your work"
-    Use the submission template above.
+=== "Hint"
+    - You can’t know the maximum without looking at every value at least once, so plan a single scan.  
+    - Track a “best so far” value; if you also need the index/name, track that too (and only update it when your tie rule says so).
 
-=== "Optional extension"
-    Also return the index (or name) of the tallest person.
+=== "Solution"
+    **Tie rule used here:** first maximum wins (keep the earliest index).  
+    **Empty input behavior:** error.
+
+    **Pseudocode (max height only):**
+    ```text
+    if heights is empty:
+        error ("no tallest in an empty list")
+
+    best = heights
+
+    for each h in heights:
+        if h > best:
+            best = h
+
+    return best
+    ```
+
+    **Pseudocode (max height + index, first max wins):**
+    ```text
+    if heights is empty:
+        error
+
+    bestIndex = 0
+
+    for i from 1 to length(heights)-1:
+        if heights[i] > heights[bestIndex]:
+            bestIndex = i
+
+    return bestIndex
+    ```
+
+    **Dry run (given dataset):**
+    - Start: bestIndex=0 (165)
+    - See 172 → update bestIndex=1
+    - See 180 → update bestIndex=2
+    - See 180 (tie) → do nothing (first max wins)
+    - See 190 → update bestIndex=5
+    - Answer: index 5, height 190
 
 
 
@@ -111,19 +149,59 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
 
     Required decisions:
     - Are negative values allowed?
-    - If not allowed, do you error, skip them, or replace them (and why)?
+    - If not allowed, do you error, skip them, or replace them?
 
-=== "Your work"
-    Use the submission template above.
+=== "Hint"
+    - A total is usually a single scan: start with `total = 0`, then add each price.  
+    - If you reject negatives, decide what “reject” means: stop with an error, or skip invalid values and continue (both are valid if you state it clearly).
 
-=== "Optional extension"
-    Return both: total cost and number of invalid entries you ignored/rejected.
+=== "Solution"
+    **Policy used here:** negative prices are invalid → *error* (stop immediately).  
+
+    **Pseudocode (sum, reject negatives):**
+    ```text
+    total = 0
+
+    for each price p in prices:
+        if p < 0:
+            error ("negative price not allowed")
+        total = total + p
+
+    return total
+    ```
+
+    **Dry run (prices = [2.50, 1.20, 0.00, 5.80]):**
+    - total = 0
+    - add 2.50 → total = 2.50
+    - add 1.20 → total = 3.70
+    - add 0.00 → total = 3.70
+    - add 5.80 → total = 9.50
+    - return 9.50
+
+    **Dry run (prices = [2.50, -1.00, 3.00]):**
+    - total = 0
+    - add 2.50 → total = 2.50
+    - see -1.00 → error ("negative price not allowed")
+
+    **Optional extension (if you prefer “skip invalid” instead of error):**
+    ```text
+    total = 0
+    invalidCount = 0
+
+    for each price p in prices:
+        if p < 0:
+            invalidCount = invalidCount + 1
+            continue
+        total = total + p
+
+    return (total, invalidCount)
+    ```
 
 
 
 ### Exercise 3 — Next bus (filter + minimum selection)
 === "Task"
-    **Task:** You are at a bus stop. You have arrival times in minutes from now.
+    **Task:** You are at a bus stop. You have arrival times in minutes from now.  
     Return the next bus (the smallest non-negative time).
 
     Example input:
@@ -139,11 +217,47 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
     - The list is empty.
     - Duplicate times.
 
-=== "Your work"
-    Use the submission template above.
+=== "Hint"
+    - Ignore invalid values (negative minutes) while searching for the smallest valid time.  
+    - Keep a `best` value that starts as “not found yet”; update it whenever you find a valid time that is smaller.
 
-=== "Hint (allowed)"
-    Many groups solve this by scanning once and tracking a current “best valid arrival so far”.
+=== "Solution"
+    **Policy used here:**  
+    - `0` is allowed (a bus arriving now counts).  
+    - If there are ties, return the time value (not “first/all”).  
+    - If no valid arrival exists, return `"no bus"`.
+
+    **Pseudocode (return next time or 'no bus'):**
+    ```text
+    best = null  # means "no valid bus found yet"
+
+    for each t in arrivals:
+        if t < 0:
+            continue
+
+        if best is null or t < best:
+            best = t
+
+    if best is null:
+        return "no bus"
+
+    return best
+    ```
+
+    **Dry run (arrivals = [-3, 12, 0, 5, 5, 28]):**
+    - best = null
+    - t=-3 → skip
+    - t=12 → best=12
+    - t=0 → best=0
+    - t=5 → 5 < 0? no → keep best=0
+    - t=5 → keep best=0
+    - t=28 → keep best=0
+    - return 0
+
+    **Edge case examples:**
+    - `arrivals = []` → return "no bus"
+    - `arrivals = [-5, -1]` → return "no bus"
+    - `arrivals = [7, 7, 2]` → return 2
 
 
 
@@ -165,40 +279,55 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
     - If `completed` contains a task not found in `tasks`, do you ignore it?
     - What happens if `tasks` is empty?
 
-=== "Your work"
-    Use the submission template above.
+=== "Hint"
+    - You’re filtering: scan `tasks` once and build a new list with only the tasks you want to keep.  
+    - Membership checks matter: if `completed` is large, checking “is this task completed?” is easier if `completed` behaves like a set.
 
-=== "Optional extension"
-    Also return how many tasks were removed.
+=== "Solution"
+    **Policy used here:**  
+    - If a completed title appears in `tasks` multiple times, remove all of its occurrences.  
+    - If `completed` contains titles not in `tasks`, ignore them.  
+    - If `tasks` is empty, return an empty list.
 
+    **Pseudocode (stable filter):**
+    ```text
+    completedSet = set made from completed
+    result = empty list
+    removedCount = 0
 
+    for each title in tasks:
+        if title is in completedSet:
+            removedCount = removedCount + 1
+        else:
+            append title to result
 
-### Exercise 5 — Test-case challenge (design tests, not code)
-=== "Task"
-    Pick two earlier exercises and write:
-    - 2 normal tests
-    - 2 edge tests
-    - 1 “bad input” test (you must define behavior)
+    return result
+    ```
 
-    For every test, write the expected output.
+    **Dry run**
+    - tasks = ["Quiz", "Read", "Lab", "Read", "Email"]
+    - completed = ["Read"]
+    - completedSet = {"Read"}
 
-=== "Your work"
-    Use this structure:
-    - Function/problem name:
-    - Normal tests:
-    - Edge tests:
-    - Bad input test:
-    - Expected outputs:
+    Scan tasks:
+    - "Quiz" not in set → keep
+    - "Read" in set → remove
+    - "Lab" not in set → keep
+    - "Read" in set → remove
+    - "Email" not in set → keep
 
-!!! warning "Common mistake"
-    A test without an expected output is not a test—it’s just input.
+    Result: ["Quiz", "Lab", "Email"]
 
+    **Optional extension**
+    Return both the filtered list and how many were removed:
+    ```text
+    return (result, removedCount)
+    ```
 
-
-### Bonus (choose one)
-- Rewrite Exercise 1 to return all indices that share the maximum.
-- Rewrite Exercise 3 to return “no bus” using a clearly defined special output.
-- Rewrite any exercise so it uses the fewest special cases while staying correct.
+    **Edge case examples**
+    - tasks = [] → []
+    - completed = [] → return tasks unchanged
+    - tasks = ["Read", "Read"] and completed = ["Read"] → []
 
 
 

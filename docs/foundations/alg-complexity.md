@@ -13,12 +13,12 @@ This lecture builds the habit you started last time: don’t just write code tha
 <div class="grid cards" markdown>
 
 - :material-file-pdf-box: __Slides (PDF)__  
-  Download and skim before class.  
-  [Open slides →](practice.md){ .md-button .md-button--primary }
+  Read and actively work through them.  
+  [Open slides →](https://github.com/evisp/dsa-algorithms/blob/main/docs/slides/2.AlgorithmAnalysis_ProblemSolving.pdf){ .md-button .md-button--primary }
 
 - :material-youtube: __Big-O intuition (video)__  
-  A quick recap of growth rates (pick your favorite resource).  
-  [Watch →](practice.md){ .md-button }
+  A quick recap of growth rates.  
+  [Watch →](https://www.youtube.com/watch?v=TQa_Dvmysfc){ .md-button }
 
 - :material-notebook-outline: __Practice__  
   Do these after reading the notes.  
