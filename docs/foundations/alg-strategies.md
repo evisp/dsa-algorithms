@@ -14,11 +14,11 @@ Now that you can measure growth (time/space), the next skill is choosing a *stra
 
 - :material-file-pdf-box: __Slides (PDF)__  
   Download and skim before class.  
-  [Open slides →](www.google.com){ .md-button .md-button--primary }
+  [Open slides →](practice.md){ .md-button .md-button--primary }
 
 - :material-youtube: __Algorithm design techniques__  
   Short overview video (optional but helpful).  
-  [Watch →](www.google.com){ .md-button }
+  [Watch →](practice.md){ .md-button }
 
 - :material-notebook-outline: __Practice__  
   Do these after reading the notes.  

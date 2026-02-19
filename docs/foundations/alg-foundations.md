@@ -13,7 +13,7 @@ This first lecture is about building good habits: describing solutions clearly, 
 
 - :material-file-pdf-box: __Slides (PDF)__  
   Download and skim before class.  
-  [Open slides →](www.google.com){ .md-button .md-button--primary }
+  [Open slides →](practice.md){ .md-button .md-button--primary }
 
 - :material-youtube: __What is an Algorithm__  
   Core ideas recap.  
@@ -26,7 +26,7 @@ This first lecture is about building good habits: describing solutions clearly, 
 - :material-notebook-outline: __Practice__  
   Do these after reading the notes.  
   [Go to practice →](practice.md){ .md-button .md-button--primary }
-  
+
 </div>
 
 !!! note "How to use the materials"

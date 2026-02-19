@@ -14,11 +14,11 @@ This lecture builds the habit you started last time: don’t just write code tha
 
 - :material-file-pdf-box: __Slides (PDF)__  
   Download and skim before class.  
-  [Open slides →](www.google.com){ .md-button .md-button--primary }
+  [Open slides →](practice.md){ .md-button .md-button--primary }
 
 - :material-youtube: __Big-O intuition (video)__  
   A quick recap of growth rates (pick your favorite resource).  
-  [Watch →](www.google.com){ .md-button }
+  [Watch →](practice.md){ .md-button }
 
 - :material-notebook-outline: __Practice__  
   Do these after reading the notes.  
