@@ -37,3 +37,6 @@ These sprints help you build strong habits: write clear solutions, test them car
 ## What you submit (each sprint)
 - Your code (zip or GitHub link).
 - A short report (3–5 pages, PDF): what you built, how you tested it, and what you learned.
+
+
+> A marathon is run one step at a time; the same is true for good software: small, correct steps add up to big results.
