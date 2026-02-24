@@ -23,7 +23,7 @@ In this tutorial, you’ll learn how each structure is built, which common opera
 
 - :material-youtube: __Video 1 (Arrays & ArrayList)__  
   Watch after the slides to reinforce the main ideas with examples.  
-  [Watch →](practice.md){ .md-button }
+  [Watch →](https://www.youtube.com/watch?v=B_Tg9orYt0Y){ .md-button }
 
 - :material-youtube: __Video 2 (Linked Lists)__  
   Focus on how traversal, insertion, and deletion work step by step.  
