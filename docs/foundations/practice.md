@@ -355,6 +355,7 @@ This section trains one skill: read code and explain how it **scales** as input 
 
 === "Task"
     For the pseudocode below, write:
+
     - What is \(n\)?
     - Time complexity (Big-O)
     - Auxiliary space complexity (Big-O)
@@ -379,6 +380,7 @@ This section trains one skill: read code and explain how it **scales** as input 
 
 === "Task"
     For the pseudocode below, write:
+
     - What is \(n\)?
     - Time complexity (Big-O)
     - Auxiliary space complexity (Big-O)
@@ -405,6 +407,7 @@ This section trains one skill: read code and explain how it **scales** as input 
 
 === "Task"
     Analyze the function below:
+
     - Define \(n\)
     - Time complexity (Big-O)
     - Auxiliary space complexity (Big-O) (assume the sort may use extra memory)
@@ -435,6 +438,7 @@ This section trains one skill: read code and explain how it **scales** as input 
 
 === "Task"
     Analyze the function below:
+
     - Define \(n\) and \(m\) (you may need two variables)
     - Time complexity (Big-O)
     - Auxiliary space complexity (Big-O)
@@ -468,6 +472,7 @@ This section trains one skill: read code and explain how it **scales** as input 
 
 === "Task"
     Analyze the function below:
+
     - Define \(n\)
     - Time complexity (Big-O)
     - Auxiliary space complexity (Big-O)
@@ -495,6 +500,7 @@ This section trains one skill: read code and explain how it **scales** as input 
 
 === "Task"
     Analyze the function below (assume the array is already sorted):
+
     - Define \(n\)
     - Time complexity (Big-O)
     - Auxiliary space complexity (Big-O)
@@ -529,6 +535,7 @@ This section trains one skill: read code and explain how it **scales** as input 
 
 This section is about choosing a strategy and justifying it (not just coding).
 For each exercise:
+
 - Pick the best strategy (brute force / divide & conquer / greedy / DP / backtracking). 
 - Explain why in 1–2 sentences.
 - Write pseudocode with decisions + edge cases. 
@@ -548,20 +555,24 @@ For each exercise:
     **Use case:** You have 1 free afternoon. You want to complete as many study tasks as possible before you must leave.
 
     Each task has:
+
     - `durationMinutes`
     - `deadlineMinutesFromNow`
 
     **Goal:** Choose the maximum number of tasks you can finish *before their deadlines*.
 
     Example input:
+
     - tasks = [(30, 60), (20, 25), (25, 40), (15, 20), (50, 55)]
 
     Required decisions:
+
     - What happens if tasks is empty?
     - What if two tasks have the same deadline?
     - Do you return the list of chosen tasks or just the count?
 
     Your group must:
+
     - Pick a strategy.
     - Write pseudocode.
     - Do one tiny dry run on the example.
@@ -580,14 +591,17 @@ For each exercise:
     **Use case:** You have a sorted list of student IDs (ascending). You want to find whether a specific ID exists.
 
     Example input:
+
     - ids = [101, 105, 120, 150, 151, 200, 260, 300]
     - target = 151
 
     Required decisions:
+
     - What if the list is empty?
     - If the target appears multiple times, do you return any index, the first, or just true/false?
 
     Your group must:
+
     - Pick a strategy.
     - Write pseudocode.
     - State time + space complexity at a high level.
@@ -607,17 +621,20 @@ For each exercise:
     Some pairs cannot sit next to each other.
 
     Example:
+
     - people = ["A", "B", "C", "D"]
     - forbiddenNeighbors = [("A","B"), ("C","D")]
 
     **Goal:** Find any valid seating order, or return “no solution”.
 
     Required decisions:
+
     - If `people` is empty, what should you return?
     - If there are multiple valid seatings, do you return the first found or all?
     - How do you represent “no solution”?
 
     Your group must:
+    
     - Pick a strategy.
     - Write pseudocode using “choose → check → recurse → undo”.
     - Give 2 edge cases.

@@ -19,7 +19,7 @@ In this tutorial, you’ll learn how each structure is built, which common opera
 
 - :material-file-pdf-box: __Slides (PDF)__  
   Read the slides first and take notes as you go.  
-  [Open slides →](practice.md){ .md-button .md-button--primary }
+  [Open slides →](https://github.com/evisp/dsa-algorithms/blob/main/docs/slides/3.Arrays_LinkedLists.pdf){ .md-button .md-button--primary }
 
 - :material-youtube: __Video 1 (Arrays & ArrayList)__  
   Watch after the slides to reinforce the main ideas with examples.  
@@ -27,7 +27,7 @@ In this tutorial, you’ll learn how each structure is built, which common opera
 
 - :material-youtube: __Video 2 (Linked Lists)__  
   Focus on how traversal, insertion, and deletion work step by step.  
-  [Watch →](practice.md){ .md-button }
+  [Watch →](https://www.youtube.com/watch?v=tkeMs9BDkkM){ .md-button }
 
 - :material-notebook-outline: __Practice__  
   Do this last to check that you can apply the ideas on your own.  
@@ -38,9 +38,6 @@ In this tutorial, you’ll learn how each structure is built, which common opera
 !!! note "How to use the materials"
     Slides → these notes → Video 1 → Video 2 → practice.  
     If you get stuck, re-read the relevant section and try one small example by hand before looking for help.
-
-
-
 
 ## 1) The big idea: access vs flexibility
 
