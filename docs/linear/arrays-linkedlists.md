@@ -5,7 +5,6 @@ Arrays make it easy to jump directly to an item using its position (index), whil
 
 In this tutorial, you’ll learn how each structure is built, which common operations tend to be fast or slow, and how to choose the right one for your use case.
 
-
 !!! info "In this lecture"
     - Arrays: contiguous memory, indexing, fixed size, and core operations. 
     - Dynamic arrays (Java `ArrayList`) and what “resizing automatically” means at a high level. 

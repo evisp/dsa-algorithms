@@ -8,6 +8,7 @@ Once you can build a linked list, stacks and queues feel much less mysterious.
     - Why we use generics (`<T>`) so one list works for many types.
     - How to implement a simple singly linked list step by step (with small code snippets).
 
+Full code can be found [here](https://github.com/evisp/dsa-algorithms/tree/main/code/arrays_linkedlists)
 
 ## 1) Why build it yourself?
 
