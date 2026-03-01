@@ -373,8 +373,17 @@ This section trains one skill: read code and explain how it **scales** as input 
     - Count passes: this code touches each element once and uses only a few variables.
 
 === "Solution"
-    Solution withheld by “the algorithm” until after the lecture.
+    - **What is \(n\)?**  
+      \(n\) = the number of items in `prices`.
 
+    - **Time complexity (Big-O):**  
+      \(O(n)\)
+
+    - **Auxiliary space complexity (Big-O):**  
+      \(O(1)\)
+
+    - **One-sentence justification:**  
+      The algorithm makes one pass over the \(n\) prices and uses only a constant amount of extra memory (`total` and the loop variable).
 
 ### Exercise B2 — Pairwise comparisons (pseudocode)
 
@@ -400,7 +409,20 @@ This section trains one skill: read code and explain how it **scales** as input 
     - The inner loop runs many times for each outer iteration (this is the “pairwise” pattern).
 
 === "Solution"
-    Solution withheld by “the algorithm” until after the lecture.
+    - **What is \(n\)?**  
+      \(n\) = the number of elements in `arr`.
+
+    - **Time complexity (Big-O):**  
+      \(O(n^2)\)
+
+    - **Auxiliary space complexity (Big-O):**  
+      \(O(1)\)
+
+    - **Short justification:**  
+      The outer loop picks a starting index `i`, and for each `i` the inner loop compares `arr[i]` with every later element `arr[j]`.  
+      That creates about \((n-1) + (n-2) + ... + 1 = n(n-1)/2\) comparisons in total, which grows like \(n^2\).  
+      The algorithm only uses a few variables (`count`, `i`, `j`), so extra space stays constant.
+
 
 
 ### Exercise B3 — Sort then scan (Java)
@@ -432,7 +454,20 @@ This section trains one skill: read code and explain how it **scales** as input 
     - Your final Big-O should be dominated by whichever phase grows faster.
 
 === "Solution"
-    Solution withheld by “the algorithm” until after the lecture.
+    - **What is \(n\)?**  
+      \(n\) = the number of elements in `arr`.
+
+    - **Time complexity (Big-O):**  
+      \(O(n \log n)\)
+
+    - **Auxiliary space complexity (Big-O):**  
+      \(O(n)\) (assuming the sort may use extra memory)
+
+    - **Short justification:**  
+      The function has two phases: it first sorts the array, then it does one linear scan to count equal neighbors.  
+      Sorting dominates the runtime because \(O(n \log n)\) grows faster than the \(O(n)\) scan, so total time is \(O(n \log n)\).  
+      If we assume the sorting step may allocate extra memory, the auxiliary space can be up to \(O(n)\), while the scan itself uses only a constant amount of extra space.
+
 
 ### Exercise B4 — “Contains” inside a loop (Java)
 
@@ -465,7 +500,20 @@ This section trains one skill: read code and explain how it **scales** as input 
     - If `tasks` has \(n\) items and `completed` has \(m\) items, how many total checks can happen?
 
 === "Solution"
-    Solution withheld by “the algorithm” until after the lecture.
+    - **What is \(n\) and \(m\)?**  
+      \(n\) = the number of items in `tasks`.  
+      \(m\) = the number of items in `completed`.
+
+    - **Time complexity (Big-O):**  
+      \(O(n \cdot m)\)
+
+    - **Auxiliary space complexity (Big-O):**  
+      \(O(n)\)
+
+    - **Short justification:**  
+      The loop runs once for each task (\(n\) iterations). For each task, `completed.contains(t)` may scan through the `completed` list, which can take up to \(m\) checks in the worst case.  
+      That gives up to \(n \cdot m\) total checks overall.  
+      The method builds a new `result` list that can contain up to \(n\) tasks, so extra space is \(O(n)\) (ignoring the input lists).
 
 
 ### Exercise B5 — Recursion growth (Python)
@@ -494,7 +542,21 @@ This section trains one skill: read code and explain how it **scales** as input 
     - Space: even if you don’t allocate arrays, recursion uses stack frames.
 
 === "Solution"
-    Solution withheld by “the algorithm” until after the lecture.
+    - **What is \(n\)?**  
+      \(n\) is the input number in `fib(n)` (it controls how deep the recursion goes and how many calls get made).
+
+    - **Time complexity (Big-O):**  
+      \(O(2^n)\)
+
+    - **Auxiliary space complexity (Big-O):**  
+      \(O(n)\)
+
+    - **Short justification:**  
+      This version recomputes the same values many times (for example, `fib(n-2)` is computed inside both `fib(n-1)` and `fib(n)`).  
+      The number of calls grows exponentially with \(n\), so the runtime is \(O(2^n)\).  
+      The deepest chain of calls is length \(n\), so the recursion stack uses \(O(n)\) extra space.  
+      **Intuition for the growth:** each call to `fib(n)` creates *two more calls* (`fib(n-1)` and `fib(n-2)`), and most of those calls create two more calls again.  
+      So the total number of calls spreads out like a branching tree, and the number of nodes in that tree increases very quickly as \(n\) increases.
 
 ### Exercise B6 — Binary search (C)
 
@@ -527,7 +589,20 @@ This section trains one skill: read code and explain how it **scales** as input 
     - Track “how many times can you halve \(n\) before it becomes 1?”
 
 === "Solution"
-    Solution withheld by “the algorithm” until after the lecture.
+    - **What is \(n\)?**  
+      \(n\) is the number of elements in the sorted array `a`.
+
+    - **Time complexity (Big-O):**  
+      \(O(\log n)\)
+
+    - **Auxiliary space complexity (Big-O):**  
+      \(O(1)\)
+
+    - **Short justification:**  
+      Each loop iteration compares `target` with `a[mid]` and then throws away half of the remaining search interval by moving either `lo` up or `hi` down.  
+      Halving the search space repeatedly takes about \(\log_2(n)\) steps until the interval becomes empty or you find the target, and each step does constant work (a few arithmetic ops and comparisons).  
+      The algorithm only uses a handful of integer variables (`lo`, `hi`, `mid`), so extra space stays constant.
+
 
 
 
@@ -582,7 +657,34 @@ For each exercise:
     - Try proposing a greedy rule as a group (e.g., earliest deadline first, shortest duration first) and challenge it with a counterexample.
 
 === "Solution"
-    Solution loading… (waiting for classroom wisdom)
+    - **Strategy**: Greedy — sort tasks by increasing deadline; keep a running `total` time and a max-heap of chosen durations; if `total` exceeds the current deadline, remove the longest chosen task. 
+    - **Why**: Deadline order ensures you never “waste” time that would make you miss an earlier deadline, and when you’re over time, dropping the single longest task frees the most time while reducing the count by only 1, which best preserves feasibility for future tasks. 
+
+    - Decisions:
+        - If `tasks` is empty: return `0`.
+        - Same deadline: break ties by shorter duration first (any consistent tie-break is OK).
+        - Return: count of tasks (returning the actual tasks is possible by storing IDs in the heap).
+
+    - Pseudocode:
+    ```text
+    function maxTasksBeforeDeadlines(tasks):
+        if tasks is empty:
+            return 0
+
+        sort tasks by deadline ascending (tie: duration ascending)
+
+        total = 0
+        maxHeap = empty   // durations of chosen tasks
+
+        for each (dur, ddl) in tasks:
+            total = total + dur
+            push dur into maxHeap
+            if total > ddl:
+                total = total - popMax(maxHeap)   // remove longest duration
+
+        return size(maxHeap)
+    ```
+
 
 
 ### Exercise C2 — Find a name fast
@@ -611,40 +713,34 @@ For each exercise:
     - Compare that to scanning from left to right (brute force baseline). 
 
 === "Solution"
-    Solution will appear after the in-class walkthrough (stay curious).
+    - **Strategy**: Divide & conquer (binary search) because `ids` is sorted, so each comparison can discard half the remaining range. 
+
+    - Decisions:
+        - If `ids` is empty: return `false` (not found). 
+        - If `target` appears multiple times: return just **true/false** (existence), since that’s what the use case asks; (if you wanted the first index, you’d use a “leftmost” binary search variant). 
+
+    - Pseudocode (returns true/false):
+    ```text
+    function containsSorted(ids, target):
+        if length(ids) == 0:
+            return false
+
+        lo = 0
+        hi = length(ids) - 1
+
+        while lo <= hi:
+            mid = lo + (hi - lo) // 2
+            if ids[mid] == target:
+                return true
+            else if ids[mid] < target:
+                lo = mid + 1
+            else:
+                hi = mid - 1
+
+        return false
+    ```
 
 
-### Exercise C3 — Seating plan with constraints (Backtracking)
-
-=== "Task"
-    **Use case:** You are organizing a small event. You must assign people to seats in a row.
-    Some pairs cannot sit next to each other.
-
-    Example:
-
-    - people = ["A", "B", "C", "D"]
-    - forbiddenNeighbors = [("A","B"), ("C","D")]
-
-    **Goal:** Find any valid seating order, or return “no solution”.
-
-    Required decisions:
-
-    - If `people` is empty, what should you return?
-    - If there are multiple valid seatings, do you return the first found or all?
-    - How do you represent “no solution”?
-
-    Your group must:
-    
-    - Pick a strategy.
-    - Write pseudocode using “choose → check → recurse → undo”.
-    - Give 2 edge cases.
-
-=== "Hint"
-    - This is a constraint-satisfaction problem: you build a partial arrangement and stop early when a constraint is violated. 
-    - The key is a fast “is this partial solution still valid?” check after each choice.
-
-=== "Solution"
-    Solution withheld by “the algorithm” until after the lecture.
 
 
 > Choose the strategy first; then the code becomes the easy part.

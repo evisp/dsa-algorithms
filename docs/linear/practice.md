@@ -23,11 +23,13 @@ In this task, you compare search time for `ArrayList<String>` vs `LinkedList<Str
     **Problem:** Measure how long it takes to check whether a random word exists in a list.
 
     **Data to generate**
+
     - Two lists: `ArrayList<String>` and `LinkedList<String>`.
     - Random words: length 8 characters.
     - Dataset sizes: 1,000; 10,000; 100,000; 500,000; 1,000,000 elements.
 
     **Experiment steps**
+
     - For each dataset size:
       - Fill both lists with random words.
       - Generate a new random word `target`.
@@ -36,6 +38,7 @@ In this task, you compare search time for `ArrayList<String>` vs `LinkedList<Str
       - Print results in a clean table.
 
     **Required decisions**
+
     - Will you run each measurement once or multiple times and average?
     - Do you test a word that is likely missing, likely present, or both?
     - Do you reuse the same `target` for both lists? (Recommended: yes, for fairness.)
@@ -103,11 +106,13 @@ These problems train the core skills you need for arrays: scanning, two pointers
     ```
 
     **Required decisions**
+
     - If there are multiple valid answers, return any.
     - If there is no solution, what do you return? (error, `null`, `[-1, -1]`, etc.)
     - You cannot use the same element twice.
 
     **Dry run dataset**
+
     - `nums = [2, 7, 11, 15]`, `target = 9` → output `[0, 1]`
 
 === "Hint"
@@ -128,11 +133,13 @@ These problems train the core skills you need for arrays: scanning, two pointers
     ```
 
     **Required decisions**
+
     - Empty input: return 0.
     - The first `k` items of `nums` must be the unique values in order.
     - Extra space must be \(O(1)\).
 
     **Dry run datasets**
+
     - `nums = [1, 1, 2]` → return `2`, array starts with `[1, 2, ...]`
     - `nums = [0,0,1,1,1,2,2,3,3,4]` → return `5`, array starts with `[0,1,2,3,4,...]`
 
@@ -156,11 +163,13 @@ These problems train the core skills you need for arrays: scanning, two pointers
     ```
 
     **Required decisions**
+
     - Empty array and size 1: no changes.
     - Must run in \(O(n)\) time.
     - Must use \(O(1)\) extra space.
 
     **Dry run datasets**
+    
     - `[1, 2, 3, 4, 5]` → `[5, 4, 3, 2, 1]`
     - `[7, 8, 9, 10]` → `[10, 9, 8, 7]`
 
