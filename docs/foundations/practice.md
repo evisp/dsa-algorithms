@@ -70,6 +70,7 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
     As a group, agree on one definition of “best” and write 3–5 steps.
 
     Required decisions:
+
     - What is the input?
     - What is the output?
     - What happens if the list is empty?
@@ -85,9 +86,11 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
     **Task:** Given a list of heights, determine the tallest height (and optionally who it belongs to).
 
     Use this dataset for your dry run:
+
     - `heights = [165, 172, 180, 180, 158, 190, 175]`
 
     Required decisions:
+
     - Empty list: return a special value or error (choose one and write it down).
     - Ties: if multiple people share the max height, choose a rule (first, last, or all).
 
@@ -128,6 +131,7 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
     ```
 
     **Dry run (given dataset):**
+
     - Start: bestIndex=0 (165)
     - See 172 → update bestIndex=1
     - See 180 → update bestIndex=2
@@ -142,12 +146,15 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
     **Task:** Given a list of food prices, compute the total.
 
     Use this dataset for your dry run:
+
     - `prices = [2.50, 1.20, 0.00, 5.80]`
 
     Now discuss this twist and decide a policy:
+
     - `prices = [2.50, -1.00, 3.00]`
 
     Required decisions:
+
     - Are negative values allowed?
     - If not allowed, do you error, skip them, or replace them?
 
@@ -171,6 +178,7 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
     ```
 
     **Dry run (prices = [2.50, 1.20, 0.00, 5.80]):**
+
     - total = 0
     - add 2.50 → total = 2.50
     - add 1.20 → total = 3.70
@@ -179,11 +187,13 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
     - return 9.50
 
     **Dry run (prices = [2.50, -1.00, 3.00]):**
+
     - total = 0
     - add 2.50 → total = 2.50
     - see -1.00 → error ("negative price not allowed")
 
     **Optional extension (if you prefer “skip invalid” instead of error):**
+
     ```text
     total = 0
     invalidCount = 0
@@ -205,14 +215,17 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
     Return the next bus (the smallest non-negative time).
 
     Example input:
+
     - `arrivals = [-3, 12, 0, 5, 5, 28]`
 
     Required decisions:
+
     - Do you allow `0`? (arriving now)
     - If two buses arrive at the same time, do you return the first, all, or just the time value?
     - What do you return if there is no valid (non-negative) arrival?
 
     Edge cases to include:
+
     - All arrivals are negative.
     - The list is empty.
     - Duplicate times.
@@ -223,6 +236,7 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
 
 === "Solution"
     **Policy used here:**  
+
     - `0` is allowed (a bus arriving now counts).  
     - If there are ties, return the time value (not “first/all”).  
     - If no valid arrival exists, return `"no bus"`.
@@ -245,6 +259,7 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
     ```
 
     **Dry run (arrivals = [-3, 12, 0, 5, 5, 28]):**
+
     - best = null
     - t=-3 → skip
     - t=12 → best=12
@@ -255,6 +270,7 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
     - return 0
 
     **Edge case examples:**
+
     - `arrivals = []` → return "no bus"
     - `arrivals = [-5, -1]` → return "no bus"
     - `arrivals = [7, 7, 2]` → return 2
@@ -270,11 +286,13 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
     Return a new list containing only tasks that are not completed, preserving original order.
 
     Example:
+
     - `tasks = ["Quiz", "Read", "Lab", "Read", "Email"]`
     - `completed = ["Read"]`
     - output: `["Quiz", "Lab", "Email"]`
 
     Required decisions:
+
     - If a task appears twice and is completed, do you remove both occurrences?
     - If `completed` contains a task not found in `tasks`, do you ignore it?
     - What happens if `tasks` is empty?
@@ -285,6 +303,7 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
 
 === "Solution"
     **Policy used here:**  
+
     - If a completed title appears in `tasks` multiple times, remove all of its occurrences.  
     - If `completed` contains titles not in `tasks`, ignore them.  
     - If `tasks` is empty, return an empty list.
@@ -305,11 +324,13 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
     ```
 
     **Dry run**
+
     - tasks = ["Quiz", "Read", "Lab", "Read", "Email"]
     - completed = ["Read"]
     - completedSet = {"Read"}
 
     Scan tasks:
+
     - "Quiz" not in set → keep
     - "Read" in set → remove
     - "Lab" not in set → keep
@@ -325,6 +346,7 @@ Use this page to practice all three Foundations topics. Write pseudocode first, 
     ```
 
     **Edge case examples**
+    
     - tasks = [] → []
     - completed = [] → return tasks unchanged
     - tasks = ["Read", "Read"] and completed = ["Read"] → []
