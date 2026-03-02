@@ -93,6 +93,8 @@ nav:
       - Overview: linear/index.md
       - Arrays & linked lists: linear/arrays-linkedlists.md
       - Build a linked list: linear/build-list.md
+      - Stacks and Queues: linear/stacks-queues.md
+      - Build a stack / queue: linear/build-stack-queue.md
       - Practice: linear/practice.md
 
 
