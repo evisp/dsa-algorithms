@@ -36,16 +36,16 @@ The code is provided (you do not write code), and your job is to **analyze the r
     **What you get:** A ready-to-run Java project that prints timing tables for each operation.
 
 === "Code (provided)"
-    [Repository link](https://github.com/YOUR_NAME/YOUR_REPO_HERE)  
+    [Repository link](https://github.com/evisp/dsa-algorithms/tree/main/code/arrays_linkedlists/PerformanceMeasure)  
 
     Files/classes included:
 
     - `Main.java`: Runs the three experiments and prints tables.  
-    - `BenchmarkTimer.java`: Small timing helper using `System.nanoTime()`, with warmup + multiple trials. [web:33][web:52]  
+    - `BenchmarkTimer.java`: Small timing helper using `System.nanoTime()`, with warmup + multiple trials.   
     - `DataFactory.java`: Builds the same dataset for all structures (`0..n-1`) and generates random indices/targets.  
     - `AccessBenchmark.java`: Times indexed reads for `int[]`, `ArrayList.get(i)`, `LinkedList.get(i)`.  
-    - `InsertDeleteBenchmark.java`: Times “insert then delete at middle index” for all three structures (arrays do copy via `System.arraycopy`). [web:65][web:80]  
-    - `SearchBenchmark.java`: Times linear search for all three (`arrayContains` for `int[]`, `contains` for lists). [web:79]  
+    - `InsertDeleteBenchmark.java`: Times “insert then delete at middle index” for all three structures (arrays do copy via `System.arraycopy`).  
+    - `SearchBenchmark.java`: Times linear search for all three (`arrayContains` for `int[]`, `contains` for lists).
 
 === "Your task / analysis"
     Answer these three key questions:
