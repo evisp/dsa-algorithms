@@ -15,81 +15,48 @@ Use this page to practice linear data structures, such as arrays, lists, stacks,
     If your algorithm has ties, empty input, or invalid input cases, decide the behavior and write it down.
 
 
-## A) ArrayList vs LinkedList (timing experiment)
+## A) Arrays vs ArrayList vs LinkedList (timing experiment)
 
-In this task, you compare search time for `ArrayList<String>` vs `LinkedList<String>` by timing how long it takes to check whether a random word exists in a list (e.g., in our case, we will time method `contains(word)` on different dataset sizes).
+In this experiment you will *observe* how runtime changes for three classic operations when the data structure changes:  
+- `int[]` (classic Java array)  
+- `ArrayList<Integer>`  
+- `LinkedList<Integer>`  
+
+The code is provided (you do not write code), and your job is to **analyze the results** and connect them to the expected Big‑O behavior. 
 
 === "Task"
-    **Problem:** Measure how long it takes to check whether a random word exists in a list.
+    **Problem:** Compare how long it takes to perform:
+    
+    1. Access by index (`get(i)` / `a[i]`)
+    2. Insert + delete at a position (middle index)
+    3. Search (linear scan / `contains`)
+    
+    **Dataset sizes:** 1,000; 10,000; 100,000; 500,000; 1,000,000 elements.
 
-    **Data to generate**
+    **What you get:** A ready-to-run Java project that prints timing tables for each operation.
 
-    - Two lists: `ArrayList<String>` and `LinkedList<String>`.
-    - Random words: length 8 characters.
-    - Dataset sizes: 1,000; 10,000; 100,000; 500,000; 1,000,000 elements.
+=== "Code (provided)"
+    [Repository link](https://github.com/YOUR_NAME/YOUR_REPO_HERE)  
 
-    **Experiment steps**
+    Files/classes included:
 
-    - For each dataset size:
-      - Fill both lists with random words.
-      - Generate a new random word `target`.
-      - Measure time for `arrayList.contains(target)`.
-      - Measure time for `linkedList.contains(target)`.
-      - Print results in a clean table.
+    - `Main.java`: Runs the three experiments and prints tables.  
+    - `BenchmarkTimer.java`: Small timing helper using `System.nanoTime()`, with warmup + multiple trials. [web:33][web:52]  
+    - `DataFactory.java`: Builds the same dataset for all structures (`0..n-1`) and generates random indices/targets.  
+    - `AccessBenchmark.java`: Times indexed reads for `int[]`, `ArrayList.get(i)`, `LinkedList.get(i)`.  
+    - `InsertDeleteBenchmark.java`: Times “insert then delete at middle index” for all three structures (arrays do copy via `System.arraycopy`). [web:65][web:80]  
+    - `SearchBenchmark.java`: Times linear search for all three (`arrayContains` for `int[]`, `contains` for lists). [web:79]  
 
-    **Required decisions**
+=== "Your task / analysis"
+    Answer these three key questions:
 
-    - Will you run each measurement once or multiple times and average?
-    - Do you test a word that is likely missing, likely present, or both?
-    - Do you reuse the same `target` for both lists? (Recommended: yes, for fairness.)
-
-=== "Hint"
-    - Put timing logic in one helper method so you don’t repeat code.
-    - Use `System.nanoTime()` for timing. 
-    - Run multiple trials (and ignore the first run) so results are less noisy. 
-
-=== "Solution"
-    **Pseudocode (experiment plan)**
-    ```text
-    sizes = 
-
-    for each n in sizes:
-        arrayList = empty ArrayList of strings
-        linkedList = empty LinkedList of strings
-
-        repeat n times:
-            w = randomWord(length 8)
-            add w to arrayList
-            add w to linkedList
-
-        target = randomWord(length 8)
-
-        t1 = timeContains(arrayList, target, trials)
-        t2 = timeContains(linkedList, target, trials)
-
-        print n, t1, t2
-    ```
-
-    **Pseudocode (timing helper)**
-    ```text
-    function timeContains(list, target, trials):
-        warmup once: list.contains(target)
-
-        totalNanos = 0
-
-        repeat trials times:
-            start = nanoTime()
-            list.contains(target)
-            end = nanoTime()
-            totalNanos = totalNanos + (end - start)
-
-        return totalNanos / trials
-    ```
+    1. **Access:** How do the `LinkedList.get(i)` times scale as `n` grows compared to `int[]` and `ArrayList.get(i)`? Explain in terms of “traversal to index” vs direct indexing.  
+    2. **Insert/Delete at position:** Which structure becomes slowest for insert/delete in the middle as `n` grows, and why do arrays/ArrayList pay a “shift/copy” cost while LinkedList pays a “walk to position” cost?   
+    3. **Search:** For the “missing” target vs “present” target, what difference do you see and why (early stop vs full scan), and do the results match the expected linear-time search for these structures?   
 
 !!! warning "Timing is tricky"
     One run is often misleading because of JVM warm-up and general system noise.   
     Treat this as a trend experiment: as \(n\) grows, does time roughly grow like a straight line? 
-
 
 ## B) Arrays practice (classic problems)
 
@@ -169,7 +136,7 @@ These problems train the core skills you need for arrays: scanning, two pointers
     - Must use \(O(1)\) extra space.
 
     **Dry run datasets**
-    
+
     - `[1, 2, 3, 4, 5]` → `[5, 4, 3, 2, 1]`
     - `[7, 8, 9, 10]` → `[10, 9, 8, 7]`
 
