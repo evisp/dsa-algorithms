@@ -18,13 +18,22 @@ They show up everywhere in real systems (editors, browsers, scheduling, bufferin
 
 - :material-file-pdf-box: __Slides (PDF)__  
   Read the slides first and take notes as you go.  
-  [Open slides →](practice.md){ .md-button .md-button--primary } 
+  [Open slides →](https://github.com/evisp/dsa-algorithms/blob/main/docs/slides/4.Stacks_Queues.pdf){ .md-button .md-button--primary }
+
+- :material-youtube: __Video 1 (Stacks)__  
+  See why “last in, first out” matches undo, browser back, and function calls.  
+  [Watch →](https://www.youtube.com/watch?v=E8PwwXz-4DE){ .md-button }
+
+- :material-youtube: __Video 2 (Queues)__  
+  See why “first in, first out” matches waiting lines, scheduling, and buffering.  
+  [Watch →](https://youtu.be/3LZDpo9EyAc){ .md-button }
 
 - :material-notebook-outline: __Practice__  
   Do this last to check that you can apply the ideas on your own.  
-  [Go to practice →](practice.md){ .md-button .md-button--primary } 
+  [Go to practice →](practice.md){ .md-button .md-button--primary }
 
 </div>
+
 
 !!! note "How to use the materials"
     Slides → these notes → practice, and always do a tiny dry run by hand before you debug. 
