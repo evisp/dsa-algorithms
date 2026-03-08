@@ -97,6 +97,7 @@ for i from 0 to length-1:           // number of passes
 ### Why it's slow (O(n²))
 
 **Bubble sort complexity**:
+
 | Case | Time | Comparisons |
 |------|------|-------------|
 | Best (already sorted) | O(n) | ~n/2 checks |
@@ -156,6 +157,7 @@ for i from 0 to length-2:           // position to fill
 ### Why it's slow (O(n²))
 
 **Selection sort complexity**:
+
 | Case | Time | Why |
 |------|------|-----|
 | Best | O(n²) | Still searches entire unsorted portion |
@@ -216,6 +218,7 @@ for i from 1 to length-1:           // next item to insert
 ### Why it's slow (O(n²))
 
 **Insertion sort complexity**:
+
 | Case | Time | Why |
 |------|------|-----|
 | Best (already sorted) | O(n) | No shifting needed |
@@ -285,6 +288,7 @@ merge(arr, start, mid, end):
 ### Why it's fast (O(n log n))
 
 **Merge sort complexity**:
+
 | Case | Time | Space |
 |------|------|-------|
 | Best | O(n log n) | O(n) |
@@ -352,6 +356,7 @@ partition(arr, low, high):
 ### Why it's fast (usually O(n log n))
 
 **Quick sort complexity**:
+
 | Case | Time | Why |
 |------|------|-----|
 | Best | O(n log n) | Perfect pivot splits |
