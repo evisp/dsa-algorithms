@@ -22,7 +22,7 @@ In this tutorial, you'll learn both methods step-by-step, their real costs, when
 
 - :material-file-pdf-box: **Slides (PDF)**  
   Read first — covers algorithms, examples, and complexity proofs.  
-  [Open slides →](practice.md){ .md-button .md-button--primary } 
+  [Open slides →](https://github.com/evisp/dsa-algorithms/blob/main/docs/slides/5.Searching_Sorting.pdf){ .md-button .md-button--primary } 
 
 - :material-youtube: **Video 1 (Linear Search)**  
   Watch after slides to see sequential checking step-by-step.  
