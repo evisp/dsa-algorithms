@@ -101,7 +101,7 @@ nav:
   - Core techniques:
       - Overview: techniques/index.md
       - Searching Algorithms: techniques/searching.md
-      - Searching Algorithms: techniques/sorting.md
+      - Sorting Algorithms: techniques/sorting.md
       - Recursion: techniques/recursion.md
 
   - Non-linear structures:
