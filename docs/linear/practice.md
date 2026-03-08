@@ -8,7 +8,7 @@ Use this page to practice linear data structures, such as arrays, lists, stacks,
 ## Jump to a topic
 - [A) ArrayList vs LinkedList (timing experiment)](#a-arraylist-vs-linkedlist-timing-experiment)
 - [B) Arrays practice (classic problems)](#b-arrays-practice-classic-problems)
-- [C) Stacks & queues (coming soon)](#c-stacks--queues-coming-soon)
+- [C) Stacks & Queues (Banking Practice)](#c-stacks--queues-banking-practice)
 
 
 !!! tip "Rule for discussion"
@@ -147,9 +147,109 @@ These problems train the core skills you need for arrays: scanning, two pointers
     Solution withheld by “the algorithm” until after the lecture.
 
 
+## C) Stacks & Queues (Banking Practice)
 
-## C) Stacks & queues (coming soon)
+Practice stacks (LIFO) and queues (FIFO) using a banking system context. Write **pseudocode first**, then implement with proper edge case handling.
 
-We'll add stack and queue practice next. Until then, remember: life is basically one big queue; except in programming, at least you get to decide the rules.  
+!!! info "Goal"
+    Use stacks for transaction undo, queues for customer service (FIFO), and priority queues for VIP service.
 
+
+### Project Files
+
+| File | Your Task |
+|---|---|
+| `Transaction.java` | Complete — no changes |
+| `Customer.java` | Complete — no changes |
+| `BankAccount.java` | ⚠️ Implement `undoLastTransaction()` |
+| `BankQueue.java` | ⚠️ Implement all queue methods below |
+| `BankingSystem.java` | Complete — run to test your work |
+
+
+### Exercise 1 — BankAccount Transaction Stack (LIFO)
+
+**File:** `BankAccount.java` → implement `undoLastTransaction()`
+
+```java
+public void undoLastTransaction()
+```
+
+| Case | Behaviour |
+|---|---|
+| Stack empty | Print `"No transactions to undo."` |
+| Undo DEPOSIT | `balance -= amount` |
+| Undo WITHDRAW | `balance += amount` |
+| Undo TRANSFER | `balance += amount` (this account's side only) |
+
+**Dry run**
+```
+deposit(100) → withdraw(30) → balance: $570, stack: [DEPOSIT, WITHDRAW]
+undoLastTransaction()       → balance: $600, stack: [DEPOSIT]
+undoLastTransaction()       → balance: $500, stack: []
+undoLastTransaction()       → "No transactions to undo."
+```
+
+**Edge cases:** empty stack · single undo · multiple consecutive undos
+
+
+### Exercise 2 — BankQueue Customer Service (FIFO)
+
+**File:** `BankQueue.java` → implement three methods
+
+```java
+public void addCustomerToQueue(Customer customer)
+public Customer serveCustomer()
+public void printQueue()
+```
+
+| Case | Behaviour |
+|---|---|
+| `customer` is null | Print `"Invalid customer."`, return |
+| `serveCustomer` on empty queue | Print `"Queue empty."`, return `null` |
+| `printQueue` on empty queue | Print `"Queue empty."` |
+| `printQueue` with customers | Print `1. Name` per customer (1-based position) |
+
+**Dry run**
+```
+add(Turing) → add(Lovelace) → Queue: [1.Turing, 2.Lovelace]
+serveCustomer() → returns Turing, Queue: [1.Lovelace]
+```
+
+**Edge cases:** empty queue · null customer · add after serving
+
+### Exercise 3 — BankQueue VIP Priority Service
+
+**File:** `BankQueue.java` → implement two more methods
+
+```java
+public void addVIPCustomer(Customer customer, int priority)  // 1=normal, 3=VIP
+public Customer serveNextCustomer()
+```
+
+| Case | Behaviour |
+|---|---|
+| `customer` is null | Print `"Invalid customer."`, return |
+| Empty VIP queue | Print `"VIP queue empty."`, return `null` |
+| Priority 3 vs 1 | VIP (3) always served first |
+| Same priority tie | Earlier arrival served first (FIFO) |
+
+**Dry run**
+```
+addVIP(Turing,1) → addVIP(Lovelace,3) → addVIP(Dijkstra,1)
+serveNextCustomer() → Lovelace [VIP]
+serveNextCustomer() → Turing   [Normal, arrived first]
+serveNextCustomer() → Dijkstra [Normal]
+```
+
+**Edge cases:** empty queue · all same priority (FIFO order) · mixed priorities### Required Decisions (All Exercises)
+
+- Empty input behavior (null/error/message)
+- Ties/stability (same priority = arrival order)
+- Invalid inputs (negative amounts, null customers)
+
+**Testing order**: Dry run by hand → pseudocode → Java → test edge cases with Main program.
+
+> Master your data tools: Arrays hold everything together, lists flex when needed, stacks undo your last move, queues keep everything in fair order. 
+
+> Build reliable systems that handle real chaos!
 
