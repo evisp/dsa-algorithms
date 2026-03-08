@@ -34,7 +34,7 @@ In this tutorial, you'll learn both methods step-by-step, their real costs, when
 
 - :material-notebook-outline: **Practice**  
   Do last: trace examples, code both, test edge cases.  
-  [Go to practice →](practice-search.md){ .md-button .md-button--primary }
+  [Go to practice →](practice.md){ .md-button .md-button--primary }
 
 </div>
 
