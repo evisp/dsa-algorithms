@@ -24,13 +24,9 @@ In this tutorial, you'll learn both methods step-by-step, their real costs, when
   Read first — covers algorithms, examples, and complexity proofs.  
   [Open slides →](https://github.com/evisp/dsa-algorithms/blob/main/docs/slides/5.Searching_Sorting.pdf){ .md-button .md-button--primary } 
 
-- :material-youtube: **Video 1 (Linear Search)**  
+- :material-youtube: **Linear Search and Binary Search**  
   Watch after slides to see sequential checking step-by-step.  
-  [Watch →](practice.md){ .md-button }
-
-- :material-youtube: **Video 2 (Binary Search)**  
-  Focus on halving process and why log n is so fast.  
-  [Watch →](practice.md){ .md-button }
+  [Watch →](https://www.youtube.com/watch?v=thchS_t-OQk){ .md-button }
 
 - :material-notebook-outline: **Practice**  
   Do last: trace examples, code both, test edge cases.  

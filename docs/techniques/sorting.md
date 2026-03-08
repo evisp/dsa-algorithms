@@ -20,11 +20,11 @@ Every real app uses it: product lists, leaderboards, file managers.
 
 - :material-youtube: **Video 1 (Simple Sorts)**  
   Watch after slides — see Bubble, Selection, Insertion step-by-step.  
-  [Watch →](practice.md){ .md-button }
+  [Watch →](https://www.youtube.com/watch?v=dHFDy3UxPeQ){ .md-button }
 
 - :material-youtube: **Video 2 (Fast Sorts)**  
   Focus on Merge and Quick — watch the divide-and-merge process.  
-  [Watch →](practice.md){ .md-button }
+  [Watch →](https://www.youtube.com/watch?v=WuB6-yKmudU){ .md-button }
 
 - :material-notebook-outline: **Practice**  
   Do last: trace examples by hand, code tiny cases, compare speeds.  
@@ -353,7 +353,7 @@ partition(arr, low, high):
 
 **Key difference from merge**: Works in-place (no extra space), but average vs worst case varies.
 
-### Why it's fast (usually O(n log n))
+### Why it's fast
 
 **Quick sort complexity**:
 
