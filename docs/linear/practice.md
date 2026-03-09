@@ -157,6 +157,10 @@ Practice stacks (LIFO) and queues (FIFO) using a banking system context. Write *
 
 ### Project Files
 
+All project files are available in the repository below. Some methods are **intentionally left incomplete**; your task is to implement them based on the exercises.
+
+🔗 [Project Repository Link](https://github.com/evisp/dsa-algorithms/tree/main/code/stacks_queues/seminar)
+
 | File | Your Task |
 |---|---|
 | `Transaction.java` | Complete — no changes |
