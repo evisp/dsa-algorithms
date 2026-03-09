@@ -166,88 +166,168 @@ Practice stacks (LIFO) and queues (FIFO) using a banking system context. Write *
 | `BankingSystem.java` | Complete — run to test your work |
 
 
-### Exercise 1 — BankAccount Transaction Stack (LIFO)
+### Exercise 1: BankAccount Transaction Stack (LIFO)
 
-**File:** `BankAccount.java` → implement `undoLastTransaction()`
+In this exercise you will work with a **stack of transactions** that records all operations performed on a bank account. The stack follows **Last-In-First-Out (LIFO)** behavior.
+
+Your task is to implement functionality that allows the program to **inspect and undo transactions** stored in the stack.
+
+
+#### Undo the Last Transaction
+
+Implement a method that **reverses the most recent transaction** in the history.
 
 ```java
 public void undoLastTransaction()
 ```
 
-| Case | Behaviour |
-|---|---|
-| Stack empty | Print `"No transactions to undo."` |
-| Undo DEPOSIT | `balance -= amount` |
-| Undo WITHDRAW | `balance += amount` |
-| Undo TRANSFER | `balance += amount` (this account's side only) |
+**Requirements**
 
-**Dry run**
+- If the transaction stack is empty, print:  
+  `"No transactions to undo."`
+- Remove the **most recent transaction** from the stack.
+- Update the account balance depending on the transaction type:
+  - **DEPOSIT** → subtract the amount from the balance
+  - **WITHDRAW** → add the amount back to the balance
+  - **TRANSFER** → add the amount back (only this account’s side)
+- Print a message indicating the undone transaction and the new balance.
+
+
+#### View the Most Recent Transaction
+
+Implement a method that **shows the latest transaction without removing it** from the stack.
+
+```java
+public void getLastTransaction()
 ```
-deposit(100) → withdraw(30) → balance: $570, stack: [DEPOSIT, WITHDRAW]
-undoLastTransaction()       → balance: $600, stack: [DEPOSIT]
-undoLastTransaction()       → balance: $500, stack: []
-undoLastTransaction()       → "No transactions to undo."
+
+**Requirements**
+
+- If the stack is empty, print:  
+  `"No transactions yet."`
+- Otherwise, print the **most recent transaction**.
+
+
+#### Print the Transaction History
+
+Implement a method that prints **all transactions stored in the stack**.
+
+```java
+public void printTransactionHistory()
 ```
 
-**Edge cases:** empty stack · single undo · multiple consecutive undos
+**Requirements**
+
+- If the stack is empty, print:  
+  `"No transaction history available."`
+- Otherwise, print all transactions belonging to the account in the order stored in the stack.
+
+### Exercise 2: BankQueue Customer Service (FIFO)
+
+In this exercise you will implement a **customer queue** for a bank service desk.  
+The queue follows **First-In-First-Out (FIFO)** behavior: the first customer to join the queue is the first to be served.
+
+Your task is to implement methods that allow the system to **add customers, serve the next customer, and inspect the queue**.
 
 
-### Exercise 2 — BankQueue Customer Service (FIFO)
+#### Add a Customer to the Queue
 
-**File:** `BankQueue.java` → implement three methods
+Implement a method that adds a new customer to the end of the queue.
 
 ```java
 public void addCustomerToQueue(Customer customer)
+```
+
+**Requirements**
+
+- If `customer` is `null`, print:  
+  `"Invalid customer."`  
+  and do not add anything to the queue.
+- Otherwise, add the customer to the **end of the queue**.
+
+#### Serve the Next Customer
+
+Implement a method that removes and returns the **next customer to be served**.
+
+```java
 public Customer serveCustomer()
+```
+
+**Requirements**
+
+- If the queue is empty, print:  
+  `"Queue empty."`  
+  and return `null`.
+- Otherwise, remove the **first customer in the queue** and return it.
+
+#### Print the Queue
+
+Implement a method that prints all customers currently waiting in the queue.
+
+```java
 public void printQueue()
 ```
 
-| Case | Behaviour |
-|---|---|
-| `customer` is null | Print `"Invalid customer."`, return |
-| `serveCustomer` on empty queue | Print `"Queue empty."`, return `null` |
-| `printQueue` on empty queue | Print `"Queue empty."` |
-| `printQueue` with customers | Print `1. Name` per customer (1-based position) |
+**Requirements**
 
-**Dry run**
+- If the queue is empty, print:  
+  `"Queue empty."`
+- Otherwise, print all customers in the queue with their **position number (starting from 1)**.
+
+Example format:
+
 ```
-add(Turing) → add(Lovelace) → Queue: [1.Turing, 2.Lovelace]
-serveCustomer() → returns Turing, Queue: [1.Lovelace]
+1. Alan Turing
+2. Ada Lovalace
+3. Dennis Ritchie
 ```
 
-**Edge cases:** empty queue · null customer · add after serving
+**Edge cases to consider:** empty queue · null customer · adding customers after some have already been served
 
-### Exercise 3 — BankQueue VIP Priority Service
+### Exercise 3: BankQueue VIP Priority Service
 
-**File:** `BankQueue.java` → implement two more methods
+In this exercise you will extend the bank queue system to support **VIP priority service**.  
+Customers may have different priority levels, and those with **higher priority must be served first**.
+
+If two customers have the **same priority**, they must still follow **FIFO order** (the one who arrived earlier is served first).
+
+#### Add a Customer with Priority
+
+Implement a method that adds a customer to the queue together with a priority level.
 
 ```java
-public void addVIPCustomer(Customer customer, int priority)  // 1=normal, 3=VIP
+public void addVIPCustomer(Customer customer, int priority)
+```
+
+**Requirements**
+
+- If `customer` is `null`, print:  
+  `"Invalid customer."`  
+  and do not add the customer.
+- The `priority` represents the service level:
+  - `1` → Normal customer
+  - `3` → VIP customer
+- Customers with **higher priority must be served before lower priority customers**.
+- Customers with the **same priority must preserve arrival order (FIFO)**.
+
+#### Subtask 2: Serve the Next Customer
+
+Implement a method that selects and serves the **next appropriate customer based on priority**.
+
+```java
 public Customer serveNextCustomer()
 ```
 
-| Case | Behaviour |
-|---|---|
-| `customer` is null | Print `"Invalid customer."`, return |
-| Empty VIP queue | Print `"VIP queue empty."`, return `null` |
-| Priority 3 vs 1 | VIP (3) always served first |
-| Same priority tie | Earlier arrival served first (FIFO) |
+**Requirements**
 
-**Dry run**
-```
-addVIP(Turing,1) → addVIP(Lovelace,3) → addVIP(Dijkstra,1)
-serveNextCustomer() → Lovelace [VIP]
-serveNextCustomer() → Turing   [Normal, arrived first]
-serveNextCustomer() → Dijkstra [Normal]
-```
+- If the queue is empty, print:  
+  `"VIP queue empty."`  
+  and return `null`.
+- Otherwise:
+  - Serve the **highest priority customer available**.
+  - If multiple customers share the same priority, serve the **one who arrived first**.
+- Remove the served customer from the queue and return it.
 
-**Edge cases:** empty queue · all same priority (FIFO order) · mixed priorities### Required Decisions (All Exercises)
-
-- Empty input behavior (null/error/message)
-- Ties/stability (same priority = arrival order)
-- Invalid inputs (negative amounts, null customers)
-
-**Testing order**: Dry run by hand → pseudocode → Java → test edge cases with Main program.
 
 > Master your data tools: Arrays hold everything together, lists flex when needed, stacks undo your last move, queues keep everything in fair order. 
 
