@@ -29,12 +29,16 @@ In this tutorial, you'll learn what recursion really is, how the call stack beha
 
 - :material-file-pdf-box: **Slides (PDF)**  
   Read first — covers the intuition, examples, pitfalls, and use cases of recursion.  
-  [Open slides →](practice.md){ .md-button .md-button--primary }
+  [Open slides →](https://github.com/evisp/dsa-algorithms/blob/main/docs/slides/6.Recursion.pdf){ .md-button .md-button--primary }
 
 
 - :material-youtube: **Recursion Fundamentals**  
   Watch after slides to see call stack behavior and tiny examples step-by-step.  
-  [Watch →](practice.md){ .md-button }
+  [Watch →](https://www.youtube.com/watch?v=U_lr07AGzQM){ .md-button }
+
+- :material-youtube: **Towers of Hanoi (Recursive Visualization)**  
+  Watch after the basics to see how recursion breaks the puzzle into smaller subproblems and how the call sequence unfolds step-by-step.  
+  [Watch →](https://www.youtube.com/watch?v=xjLTnOwpQqg){ .md-button }
 
 
 - :material-notebook-outline: **Practice**  
@@ -219,6 +223,7 @@ function factorial(n):
 
 
 **Complexity**:
+
 | Measure | Cost |
 |---------|------|
 | Time | O(n) |
@@ -263,6 +268,7 @@ For example, `fib(5)` needs `fib(4)` and `fib(3)`, but `fib(4)` also needs `fib(
 
 
 **Complexity**:
+
 | Measure | Cost |
 |---------|------|
 | Time | O(2^n) |
@@ -328,6 +334,7 @@ Recursion and iteration can often solve the same problem, but they do not always
 
 
 **Quick comparison:**
+
 | Approach | Time | Extra Space | Good for |
 |----------|------|-------------|----------|
 | Recursive factorial | O(n) | O(n) | Teaching, elegance |
@@ -379,6 +386,7 @@ Towers of Hanoi is one of the clearest demonstrations of recursion.
 
 
 You have:
+
 - Three rods
 - Several disks of different sizes
 - The goal of moving all disks from one rod to another
@@ -427,6 +435,7 @@ Solve a smaller version, do one direct action, then solve the smaller version ag
 
 
 **Complexity**:
+
 | Measure | Cost |
 |---------|------|
 | Time | O(2^n) |
