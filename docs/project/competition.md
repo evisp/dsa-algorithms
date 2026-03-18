@@ -11,6 +11,7 @@ You will compete in teams to solve algorithmic challenges, think under pressure,
 
 !!! tip "Purpose"
     This competition is designed to help you:
+
     - Apply data structures and algorithms in practice
     - Improve problem-solving under time constraints
     - Communicate technical ideas clearly
@@ -24,13 +25,13 @@ You will compete in teams to solve algorithmic challenges, think under pressure,
 - The top two teams will advance to the final stage
 
 !!! warning "Important"
-    Each team member must answer at least one question during the competition.  
-    Teams are free to define their own strategy: who takes the lead, who codes, who explains?
+    - Each team member must answer at least one question during the competition.  
+    - Teams are free to define their own strategy: who takes the lead, who codes, who explains?
 
 !!! tip "Competition Mindset"
-    Will your team rely on speed or precision?  
-    Will you take risks or play it safe?  
-    The right strategy can make the difference.
+    - Will your team rely on speed or precision?  
+    - Will you take risks or play it safe?  
+    - The right strategy can make the difference.
 
 ## Types of Challenges
 
@@ -130,7 +131,7 @@ Output: [5, 4, 3, 2, 1]
 ### 6. Algorithm Debate
 
 !!! tip "Goal"
-Justify the choice of an algorithm in a given scenario.
+    Justify the choice of an algorithm in a given scenario.
 
 **Example:**
 
@@ -177,15 +178,15 @@ Each challenge is assigned a **core point value** according to its difficulty an
 ## Strategy Guidelines
 
 !!! tip "Recommended approach"
-- Discuss and agree on an approach before coding
-- Prioritize correctness before optimization
-- Communicate clearly within your team
-- Consider edge cases early
+    - Discuss and agree on an approach before coding
+    - Prioritize correctness before optimization
+    - Communicate clearly within your team
+    - Consider edge cases early
 
 !!! warning "Common pitfalls"
-- Starting implementation without a clear plan
-- Ignoring constraints or edge cases
-- Failing to justify decisions
+    - Starting implementation without a clear plan
+    - Ignoring constraints or edge cases
+    - Failing to justify decisions
 
 
 ## Final Note
