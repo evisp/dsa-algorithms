@@ -276,12 +276,10 @@ In this section you will explain and compare **Insertion Sort**, **Merge Sort**,
 
 ## C) Recursion
 
-
-This section is a **structure placeholder** for now. 
+This section introduces recursion as a problem-solving method where a function solves a problem by reducing it to smaller versions of the same problem.
 
 !!! info "Goal"
     Explain recursion as a problem-solving method where a function solves a problem by reducing it to smaller versions of the same problem.
-
 
 === "Concept check"
     - What is recursion?
@@ -308,21 +306,92 @@ This section is a **structure placeholder** for now.
     - How is recursion related to stack behavior?
     - Why are some recursive solutions elegant but memory-expensive?
 
-=== "Common mistakes"
-    - Missing base case.
-    - Base case never reached.
-    - Wrong return value.
-    - Changing the problem in the wrong direction.
-    - Duplicating work unnecessarily.
+### Practical exercises
 
-=== "Future exercises"
-    - Factorial
-    - Fibonacci
-    - Sum of array recursively
-    - Binary search recursively
-    - Merge sort recursion tree
-    - Quick sort recursion tree
+These exercises focus on the two key ideas in recursion: defining a correct base case and reducing the problem to a smaller version of the same problem.
 
+#### Palindrome check
+
+**Problem:** Write a recursive function that checks whether a given string reads the same forward and backward.
+
+**Method signature:** `public static boolean isPalindrome(String s)`
+
+The input is a `String s`. The output is a boolean value: return `true` when the string is a palindrome, and return `false` otherwise.
+
+**Requirements**:
+
+- Use recursion only
+- Compare the first and last characters
+- Continue with the inner substring
+- Stop when the string length is 0 or 1 
+
+**Required decisions**:
+- Will you treat uppercase and lowercase as different?
+- Will you keep spaces as part of the string?
+
+**Edge cases**:
+- Empty string
+- One-character string
+- A string that fails on the first comparison
+
+#### Reverse an array
+
+**Problem:** Write a recursive function that reverses the elements of an array in place.
+
+**Method signature:** `public static void reverseArray(int[] arr, int left, int right)`
+
+The input is an `int[] arr` together with two indices, `left` and `right`, that mark the current part of the array being processed. The function does not return a value; instead, it modifies the same array so that its elements appear in reverse order.
+
+
+**Requirements**:
+
+- Use recursion only
+- Swap the first and last unsolved elements
+- Continue with the smaller inner part of the array
+- Stop when the left index meets or passes the right index 
+
+**Required decisions**:
+
+- What should happen for an empty array?
+- What should happen for a one-element array?
+
+**Edge cases**:
+
+- Empty array
+- One-element array
+- Even-length array
+- Odd-length array
+
+#### Maze reachability
+
+**Problem:** Write a recursive function that explores a maze and marks all cells that can be reached from a given starting position.
+
+In this maze, each cell has a meaning. A wall cannot be crossed, an open cell can be visited, and the start cell shows where the exploration begins. Your task is to complete the recursive function so that it moves through the maze step by step and marks every open cell that is reachable from the current position.
+
+**Method signature:** `public static void fillReachable(char[][] maze, int row, int col)`
+
+The input is a `char[][] maze` together with the current position `row` and `col`. The function does not return a value. Instead, it modifies the same maze by marking the cells that can be reached from the start. At each step, the function should decide whether it must stop or whether it should continue exploring neighboring cells.
+
+**Requirements:**
+
+- Use recursion only
+- Stop when the position is outside the maze
+- Stop when the current cell is a wall
+- Stop when the current cell was already visited
+- Mark the current reachable cell
+- Continue recursively in the four main directions: up, down, left, and right
+
+**Required decisions:**
+
+- Which symbol will represent a visited cell?
+- Should the start cell also be marked as visited?
+
+**Edge cases:**
+
+- Start position on the border
+- Start position surrounded by walls
+- Maze with only one reachable cell
+- Attempting to revisit an already marked cell
 
 
 >> Good programmers do not just run algorithms; they can explain them, defend them, and choose them for the right situation.
