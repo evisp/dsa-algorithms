@@ -103,6 +103,8 @@ nav:
       - Searching Algorithms: techniques/searching.md
       - Sorting Algorithms: techniques/sorting.md
       - Recursion: techniques/recursion.md
+      - Practice: techniques/practice.md
+
 
   - Non-linear structures:
       - Overview: nonlinear/index.md
