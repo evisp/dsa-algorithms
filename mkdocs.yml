@@ -103,6 +103,7 @@ nav:
       - Searching Algorithms: techniques/searching.md
       - Sorting Algorithms: techniques/sorting.md
       - Recursion: techniques/recursion.md
+      - Backtracking: techniques/backtracking.md
       - Practice: techniques/practice.md
 
 

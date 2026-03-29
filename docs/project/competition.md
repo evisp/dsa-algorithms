@@ -88,7 +88,9 @@ Explain **recursion** to a beginner in plain terms.
     Clarity, simplicity, and confidence in your explanation earn points; not just technical correctness.
 
 
-### 4. Coding Challenge (LeetCode Style)
+
+
+## 4. Coding Challenge (LeetCode Style)
 
 !!! tip "Goal"
     Solve an algorithmic problem by designing and implementing a solution, then clearly explain your approach and reasoning.
