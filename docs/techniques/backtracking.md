@@ -21,13 +21,10 @@ In this tutorial, you learn backtracking as "recursion that undoes mistakes," tr
 !!! info "Sample skeleton code"
     - Use the starter code in this folder to complete the backtracking tasks:
       [Backtracking skeleton code](https://github.com/evisp/dsa-algorithms/tree/main/code/techniques/backtracking)
-    - Included tasks:
-      - N-Queens
-      - Sudoku
-    - Your job:
-      - Read the problem requirements in the lecture notes.
-      - Complete the missing backtracking logic.
-      - Test your solution on small examples before larger cases.
+    - Included tasks (N-Queens and Sudoku)
+    - Read the problem requirements in the lecture notes.
+    - Complete the missing backtracking logic.
+    - Test your solution on small examples before larger cases.
 
 ## 1) The big idea: recursion + undo for exhaustive search
 
