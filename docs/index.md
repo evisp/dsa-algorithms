@@ -32,10 +32,6 @@ Algorithms and data structures help you write programs that stay correct and fas
   Searching, sorting, recursion-patterns that keep returning in different problems.  
   [Open →](techniques/index.md)
 
-- :material-graph-outline: **Non-linear structures**  
-  Trees and graphs, plus fundamental traversal ideas.  
-  [Open →](nonlinear/index.md)
-
 </div>
 
 ## Project
