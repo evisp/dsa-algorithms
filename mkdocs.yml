@@ -107,11 +107,10 @@ nav:
       - Practice: techniques/practice.md
 
 
-  - Non-linear structures:
-      - Overview: nonlinear/index.md
-      - Trees: nonlinear/trees/index.md
-      - Graphs: nonlinear/graphs/index.md
-
+  - Binary Search Trees:
+      - Overview: trees/index.md
+      - Fundamentals of Trees: trees/tree-fundamentals.md
+      
   - Project:
       - Overview: project/index.md
       - Sprint 1: project/sprint-1.md
