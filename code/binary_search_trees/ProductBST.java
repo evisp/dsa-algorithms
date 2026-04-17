@@ -94,17 +94,11 @@ public class ProductBST {
     
  // 1. Min and Max: Prove the sorted structure
     public Product findMin() {
-        if (root == null) return null;
-        Node current = root;
-        while (current.left != null) current = current.left; // Always go left
-        return current.product;
+        return null;
     }
 
     public Product findMax() {
-        if (root == null) return null;
-        Node current = root;
-        while (current.right != null) current = current.right; // Always go right
-        return current.product;
+        return null;
     }
 
     // 2. Height: The longest path from root to leaf
@@ -142,9 +136,7 @@ public class ProductBST {
     }
 
     private int countLeavesRecursive(Node node) {
-        if (node == null) return 0;
-        if (node.left == null && node.right == null) return 1;
-        return countLeavesRecursive(node.left) + countLeavesRecursive(node.right);
+        return 0;
     }
     
     public void delete(int id) {
