@@ -110,6 +110,10 @@ nav:
   - Binary Search Trees:
       - Overview: trees/index.md
       - Fundamentals of Trees: trees/tree-fundamentals.md
+      - Binary Search Trees: trees/bst.md
+      - BST in Practice: trees/bst-advanced.md
+      - Practice: trees/practice.md
+
       
   - Project:
       - Overview: project/index.md
