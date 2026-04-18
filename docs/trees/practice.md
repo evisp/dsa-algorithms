@@ -146,11 +146,11 @@ The PM wants a "remove discontinued products" button and a "update price" field 
 === "Brief"
     1. Trace `delete(70)` on the tree below. Which case applies? What is the in-order successor?
         ```text
-                
-               /    \
-                
-            / \     / \
-           
+             [50]
+            /    \
+         [30]    [70]
+         /  \    /   \
+      [20] [40] [60] [80]
         ```
     2. A junior developer implements `updatePrice(id, newPrice)` as: delete the product, then re-insert it with the new price. What could go wrong?
     3. Write pseudocode for a safer `update()` method that avoids this problem.

@@ -114,6 +114,12 @@ nav:
       - BST in Practice: trees/bst-advanced.md
       - Practice: trees/practice.md
 
+  - Graphs:
+    - Overview: graphs/index.md
+    - Fundamentals of Graphs: graphs/graph-fundamentals.md
+    - Graph Algorithms: graphs/graph-algorithms.md
+    - Practice: graphs/practice.md
+
       
   - Project:
       - Overview: project/index.md
