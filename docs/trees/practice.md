@@ -183,7 +183,7 @@ Each group has **10 minutes** to prepare and **3–5 minutes** to present. After
 
 ## Block 3 — Implementation Tasks
 
-The following tasks use the `ProductBST` codebase from [GitHub](LINK). Each task targets a specific method. Write and test your solution locally before submitting.
+The following tasks use the `ProductBST` codebase from [GitHub](https://github.com/evisp/dsa-algorithms/tree/main/code/binary_search_trees). Each task targets a specific method. Write and test your solution locally before submitting.
 
 ### Task 1 — `findMin()` and `findMax()` 
 
