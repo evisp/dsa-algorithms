@@ -48,11 +48,13 @@ Using the graph you drew in Part A, answer the following **without writing any c
 
 === "Task"
     For every node, compute:
+
     1. **In-degree** — how many people follow this person?
     2. **Out-degree** — how many people does this person follow?
     3. **Total degree** — in-degree + out-degree.
 
     Then answer:
+
     - Which node has the **highest in-degree**? What does that mean in this network?
     - Which node has the **highest out-degree**? What does that mean?
     - Does the graph contain a **cycle**? If yes, trace the path. If no, explain why not.
@@ -219,174 +221,201 @@ Each group has **10 minutes** to prepare and **3–5 minutes** to present. After
 
 ## Block 3 — Implementation Tasks
 
-The following tasks use the `Graph` scaffold below. Copy it into a new file `Graph.java` and implement each method in the order given. Test your solution locally before moving to the next task.
+The following tasks use the scaffold below. Copy the three files into your project and implement each method in order. Test locally before moving on.
 
 ### The Scaffold
 
+**`City.java`**
+```java
+public class City {
+    public String name;
+    public String type; // "capital", "port", "town"
+
+    public City(String name, String type) {
+        this.name = name;
+        this.type = type;
+    }
+
+    @Override public String toString() { return name + " (" + type + ")"; }
+
+    @Override public boolean equals(Object o) {
+        if (!(o instanceof City)) return false;
+        return this.name.equals(((City) o).name);
+    }
+
+    @Override public int hashCode() { return name.hashCode(); }
+}
+```
+
+**`Road.java`**
+```java
+public class Road {
+    public City from;
+    public City to;
+    public int distanceKm;
+    public boolean isBidirectional;
+
+    public Road(City from, City to, int distanceKm, boolean isBidirectional) {
+        this.from = from;
+        this.to = to;
+        this.distanceKm = distanceKm;
+        this.isBidirectional = isBidirectional;
+    }
+
+    @Override public String toString() { return "Road to " + to.name + " (" + distanceKm + "km)"; }
+}
+```
+
+**`CityGraph.java`**
 ```java
 import java.util.*;
 
-public class Graph {
+public class CityGraph {
 
-    private Map<String, List<String>> adjacencyList;
+    private HashMap<City, List<Road>> adjacencyList;
 
-    public Graph() {
+    public CityGraph() {
         this.adjacencyList = new HashMap<>();
     }
 
     // ── Task 1 ─────────────────────────────────────────────
-    public void addVertex(String vertex) {
+    public void addCity(City city) {
         // your code here
     }
 
-    public void addEdge(String from, String to) {
+    public void addRoad(City from, City to, int distanceKm, boolean isBidirectional) {
         // your code here
     }
 
-    public void printAdjacencyList() {
+    public void printMap() {
         // your code here
     }
 
     // ── Task 2 ─────────────────────────────────────────────
-    public int[] getDegree(String vertex) {
+    public int[] getDegree(City city) {
         // Return int[] { inDegree, outDegree, totalDegree }
         // your code here
         return new int[]{0, 0, 0};
     }
 
     // ── Task 3 ─────────────────────────────────────────────
-    public boolean hasEdge(String from, String to) {
+    public boolean hasRoad(City from, City to) {
         // your code here
         return false;
     }
 
     // ── Task 4 (Extension) ─────────────────────────────────
-    public boolean hasPath(String from, String to) {
+    public boolean hasRoute(City from, City to) {
         // your code here
         return false;
+    }
+
+    // ── Sample data ────────────────────────────────────────
+    public static void main(String[] args) {
+        CityGraph albania = new CityGraph();
+
+        City tirana      = new City("Tirana",       "capital");
+        City durres      = new City("Durrës",        "port");
+        City elbasan     = new City("Elbasan",       "town");
+        City vlore       = new City("Vlorë",         "port");
+        City korce       = new City("Korçë",         "town");
+        City gjirokaster = new City("Gjirokastër",   "town");
+
+        albania.addRoad(tirana,   durres,      38,  true);
+        albania.addRoad(tirana,   elbasan,     54,  false);
+        albania.addRoad(durres,   vlore,      148,  true);
+        albania.addRoad(elbasan,  korce,       95,  false);
+        albania.addRoad(korce,    gjirokaster, 80,  false);
+
+        albania.printMap();
     }
 }
 ```
 
-
-### Task 1 — `addVertex`, `addEdge`, `printAdjacencyList`
-
-Before you can do anything with a graph, you need to be able to build one.
+### Task 1 — `addCity`, `addRoad`, `printMap`
 
 === "Task"
     Implement the three foundational methods:
 
-    - `addVertex(String vertex)` — adds a node to the graph with an empty neighbour list.
-      If the vertex already exists, do nothing.
-    - `addEdge(String from, String to)` — adds a directed edge from one node to another.
-      If either vertex does not exist, add it first before creating the edge.
-    - `printAdjacencyList()` — prints every vertex and its list of neighbours, one per line.
+    - `addCity(City city)` — adds a city to the graph with an empty road list. If it already exists, do nothing.
+    - `addRoad(City from, City to, int distanceKm, boolean isBidirectional)` — adds a directed road between two cities. If either city does not exist, add it first. If `isBidirectional` is `true`, add a road in both directions.
+    - `printMap()` — prints every city and its outgoing roads, one city per line.
 
-    **Expected output** for the ConnectED sample:
-    ```
-    CS101 → [CS201]
-    CS201 → [CS301, CS302]
-    CS301 → [CS401]
-    CS302 → []
-    CS401 → []
-    ```
-
-    **Then answer in a comment:** what happens if you call `addEdge("CS101", "CS201")` twice?
-    Should your implementation allow duplicate edges? How would you prevent them?
+    **Then answer:** what happens if `addRoad(tirana, durres, 38, true)` is called twice? Should duplicate roads be allowed? How would you prevent them?
 
 ??? hint "Hint"
-    `addVertex` should check `adjacencyList.containsKey(vertex)` before doing anything.
-    `addEdge` should call `addVertex` on both nodes to be safe, then add `to` to the list of `from`.
-    For `printAdjacencyList`, iterate over every entry in the map and print key → value.
+    `addCity` should check `adjacencyList.containsKey(city)` before doing anything.
+    `addRoad` should call `addCity` on both ends, create a `Road` object, and add it to `from`'s list.
+    If bidirectional, create a second `Road` in reverse and add it to `to`'s list.
 
 
-### Task 2 — `getDegree(String vertex)`
-
-Given a node, compute how connected it is.
+### Task 2 — `getDegree(City city)`
 
 === "Task"
-    Implement `getDegree(String vertex)` so that it returns an array of three integers:
-    `{ inDegree, outDegree, totalDegree }`.
+    Implement `getDegree(City city)` so that it returns `{ inDegree, outDegree, totalDegree }`.
 
-    - **Out-degree:** how many nodes this vertex points to. This is easy to find — look at its neighbour list.
-    - **In-degree:** how many nodes point to this vertex. This requires scanning the entire graph.
-    - **Total degree:** in-degree + out-degree.
+    - **Out-degree:** how many roads leave this city — read directly from its road list.
+    - **In-degree:** how many roads from other cities lead into this city — requires scanning the whole graph.
+    - **Total degree:** in + out.
 
-    **Constraints:**
-    - If the vertex does not exist in the graph, return `{ -1, -1, -1 }`.
-    - Do not add any new fields to the class.
+    **Constraints:** return `{ -1, -1, -1 }` if the city does not exist. Do not add new fields.
 
-    **Verify on the ConnectED sample:**
-    - `getDegree("CS201")` → `{ 1, 2, 3 }`
-    - `getDegree("CS401")` → `{ 1, 0, 1 }`
+    **Verify on the sample data:**
+    - `getDegree(tirana)` → `{ 1, 2, 3 }`
+    - `getDegree(gjirokaster)` → `{ 1, 0, 1 }`
 
-    **Then answer in a comment:** what is the time complexity of computing in-degree this way?
-    How would you reduce it if in-degree queries needed to be fast and frequent?
+    **Then answer in a comment:** what is the time complexity of computing in-degree this way? How would you redesign the class to make in-degree lookups faster?
 
 ??? hint "Hint"
-    Out-degree = `adjacencyList.get(vertex).size()`.
-    For in-degree, loop through every vertex's neighbour list and count how many times
-    `vertex` appears as a neighbour.
+    Out-degree = `adjacencyList.get(city).size()`.
+    For in-degree, loop through every city's road list and count how many `Road` objects have `.to.equals(city)`.
 
-
-### Task 3 — `hasEdge(String from, String to)`
-
-Given two nodes, check whether a direct connection exists between them.
+### Task 3 — `hasRoad(City from, City to)`
 
 === "Task"
-    Implement `hasEdge(String from, String to)` so that it returns `true` if a directed edge
-    from `from` to `to` exists, and `false` otherwise.
+    Implement `hasRoad(City from, City to)` returning `true` if a direct directed road exists, `false` otherwise.
 
-    **Constraints:**
-    - If either vertex does not exist, return `false`.
-    - Do not traverse the entire graph — use the adjacency list directly.
+    **Constraints:** return `false` if either city does not exist. Do not traverse the whole graph.
 
-    **Verify on the ConnectED sample:**
-    - `hasEdge("CS101", "CS201")` → `true`
-    - `hasEdge("CS201", "CS101")` → `false`
-    - `hasEdge("CS101", "CS401")` → `false`
-
-    **Then answer in a comment above the method:**
-    1. What is the time complexity of this method using an adjacency list?
-    2. What would it be if you used an adjacency matrix instead?
-    3. Which is faster for this specific operation, and why?
-
-??? hint "Hint"
-    Check that `from` exists in the map, then check whether `adjacencyList.get(from)` contains `to`.
-    One null check, one list contains check — that is the whole method.
-
-
-### Task 4 — `hasPath(String from, String to)` *(Extension)*
-
-A direct edge tells you about immediate connections. A path tells you about reachability across the whole graph.
-
-=== "Task"
-    Implement `hasPath(String from, String to)` so that it returns `true` if any path —
-    direct or through intermediate nodes — exists from `from` to `to`.
-
-    **Constraints:**
-    - If either vertex does not exist, return `false`.
-    - A vertex is not considered a path to itself unless there is an explicit cycle.
-    - You must track visited nodes to avoid infinite loops.
-    - Choose either BFS or DFS. State your choice and justify it in a comment above the method.
-
-    **Verify on the ConnectED sample:**
-    - `hasPath("CS101", "CS401")` → `true`
-    - `hasPath("CS401", "CS101")` → `false`
-    - `hasPath("CS302", "CS401")` → `false`
+    **Verify on the sample data:**
+    - `hasRoad(tirana, durres)` → `true`
+    - `hasRoad(durres, tirana)` → `true` *(bidirectional)*
+    - `hasRoad(tirana, elbasan)` → `true`
+    - `hasRoad(elbasan, tirana)` → `false` *(one-way)*
+    - `hasRoad(tirana, gjirokaster)` → `false`
 
     **Then answer in a comment:**
-    1. What data structure does your traversal use internally?
-    2. What is the time complexity of `hasPath` in terms of \(V + E\)?
-    3. Would the result ever differ between BFS and DFS for this method? Why or why not?
+    1. What is the time complexity of this method using an adjacency list?
+    2. What would it be with an adjacency matrix?
+    3. For a country with 500 cities and 800 roads, which representation uses less memory and why?
 
 ??? hint "Hint"
-    Start at `from`. Add it to a visited set and a queue (BFS) or stack (DFS).
-    At each step, take the next node, check if it equals `to` — if yes, return `true`.
-    Otherwise, add all unvisited neighbours to the queue/stack and mark them visited.
-    If you exhaust all reachable nodes without finding `to`, return `false`.
+    Check `from` exists, then iterate over `adjacencyList.get(from)` and check whether any `Road` has `.to.equals(to)`.
 
+### Task 4 — `hasRoute(City from, City to)` *(Extension)*
 
+=== "Task"
+    Implement `hasRoute(City from, City to)` returning `true` if any sequence of roads leads from `from` to `to`.
+
+    **Constraints:** return `false` if either city does not exist. A city is not reachable from itself unless there is an explicit cycle. Track visited cities to avoid infinite loops. Choose BFS or DFS and justify your choice in a comment.
+
+    **Verify on the sample data:**
+    
+    - `hasRoute(tirana, gjirokaster)` → `true` *(via Elbasan → Korçë)*
+    - `hasRoute(gjirokaster, tirana)` → `false`
+    - `hasRoute(vlore, korce)` → `false`
+
+    **Then answer in a comment:**
+
+    1. What data structure does your traversal use internally?
+    2. What is the time complexity in terms of V + E?
+    3. Would BFS and DFS ever return different results for this method? Why or why not?
+
+??? hint "Hint"
+    Add `from` to a visited `Set<City>` and a queue (BFS) or stack (DFS).
+    At each step, take the next city — if it equals `to`, return `true`.
+    Otherwise add all unvisited neighbours and mark them visited.
+    If the structure empties without finding `to`, return `false`.
 
 !!! warning "Edge case checklist"
     Before submitting any task, verify your solution handles:
