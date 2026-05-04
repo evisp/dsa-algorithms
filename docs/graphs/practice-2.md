@@ -1,6 +1,6 @@
 # Graph Algorithms: Practice
 
-This page covers the implementation of Dijkstra's algorithm and A* on a real weighted graph. You will work in the `CityGraph` [repository](https://github.com/evisp/dsa-algorithms/tree/main/code) - all scaffold code is already there. Your job is to implement four methods in order.
+This page covers the implementation of Dijkstra's algorithm and A* on a real weighted graph. You will work in the `CityGraph` [repository](https://github.com/evisp/dsa-algorithms/tree/main/code/graphs) - all scaffold code is already there. Your job is to implement four methods in order.
 
 !!! info "In this page"
     - **Task 1:** `reconstructPath` — shared path-building helper.
@@ -8,7 +8,6 @@ This page covers the implementation of Dijkstra's algorithm and A* on a real wei
     - **Task 3:** `heuristic` — admissible straight-line distance estimate.
     - **Task 4:** `aStar` — guided shortest path using cost + heuristic.
 
-**Repository:** `[repo link](https://github.com/evisp/dsa-algorithms/tree/main/code)`  
 **Files to edit:** `CityGraph.java` only. Do not modify `City.java` or `Road.java`.
 
 
