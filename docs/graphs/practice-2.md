@@ -1,17 +1,93 @@
 # Graph Algorithms: Practice
 
-This page covers the implementation of Dijkstra's algorithm and A* on a real weighted graph. You will work in the `CityGraph` [repository](https://github.com/evisp/dsa-algorithms/tree/main/code/graphs) - all scaffold code is already there. Your job is to implement four methods in order.
+This page has two blocks. The first asks you to think like a system designer — given a real-world problem, how do you model it as a graph? The second asks you to implement Dijkstra and A* on a concrete weighted graph.
 
 !!! info "In this page"
-    - **Task 1:** `reconstructPath` — shared path-building helper.
-    - **Task 2:** `dijkstra` — shortest path using accumulated cost.
-    - **Task 3:** `heuristic` — admissible straight-line distance estimate.
-    - **Task 4:** `aStar` — guided shortest path using cost + heuristic.
+    - **Block 1 — Graph Modeling:** Three real-world scenarios. For each one, decompose the system into graph primitives and reason about which algorithms apply.
+    - **Block 2 — Implementation:** Four coding tasks building Dijkstra, A*, and their supporting methods on an Albanian city network.
+
+
+## Block 1 — Graph Modeling
+
+For each scenario below, answer the full question set. Some questions will have clear answers; others will require you to make a judgment call and justify it.
+
+**Question set: apply this to every scenario:**
+
+1. What are the **nodes**? What are the **edges**?
+2. **Directed or undirected?** Is the relationship mutual, or does it flow one way?
+3. **Weighted or unweighted?** If weighted, what does the weight represent?
+4. What does a **cycle** mean in this system — is it valid, or does it signal a problem?
+5. What does an **isolated node** (no edges) represent?
+6. **Adjacency list or adjacency matrix?** Justify based on the expected density of connections.
+
+
+### Scenario A — WhatsApp Message Spread
+
+A public health agency wants to model how quickly a message — or a virus — spreads through a population. They have data on who has communicated with whom over the past 30 days. They want to answer two questions: *how many people can a given person reach?* and *what is the shortest chain of contacts between two people?*
+
+=== "Questions"
+    Work through the full question set for this scenario.
+
+    Then answer these additional questions:
+
+    - Does Dijkstra apply here? Why or why not?
+    - If the agency wanted to find the person who can reach the most others in the fewest steps, which algorithm would you run and from where?
+    - What does it mean if the graph has two completely disconnected components?
+
+??? hint "Hint"
+    Think about whether contact between two people is one-directional or mutual.
+    For reachability and shortest hops, think about what BFS explores level by level —
+    each level is one more degree of separation from the source.
+
+
+### Scenario B — Airport Route Network
+
+An airline comparison website wants to help users find the cheapest or fastest flight between any two cities. The dataset contains direct routes between airports, along with price and flight duration for each route. Not all routes operate in both directions — some are one-way seasonal routes.
+
+=== "Questions"
+    Work through the full question set for this scenario.
+
+    Then answer these additional questions:
+
+    - The website wants to find the cheapest route, which may involve one or two layovers. Which algorithm handles this? What is the edge weight?
+    - Could A\* improve performance here? What would the heuristic be, and why is it admissible?
+    - An airport appears in the dataset but has no listed routes. What does this mean and how should the system handle it?
+
+??? hint "Hint"
+    There can be more than one useful edge weight — price and duration are both valid.
+    The choice of weight changes what "shortest path" means.
+    For A*, think about what geographic property of airports gives you a natural lower bound on flight distance.
+
+
+### Scenario C — Food Delivery Routing
+
+A food delivery platform needs to route drivers from restaurants to customers through city streets as quickly as possible. Streets have speed limits and can be one-way. Traffic conditions change the effective travel time on each road throughout the day.
+
+=== "Questions"
+    Work through the full question set for this scenario.
+
+    Then answer these additional questions:
+
+    - Traffic data updates travel times in real time. How does this affect the graph, and does it affect which algorithm you use?
+    - A cycle exists when a driver can loop around a block and return to the same junction. Is this a problem in this system?
+    - The platform wants the fastest route by time, not the shortest by distance. What is the edge weight and which algorithm applies?
+    - Could A\* apply? What would the heuristic be?
+
+??? hint "Hint"
+    Real road networks are almost always modelled as directed weighted graphs —
+    one-way streets and asymmetric travel times make undirected models inaccurate.
+    For A*, straight-line geographic distance is always a valid lower bound on road travel distance.
+
+
+
+## Block 2 — Implementation
+
+You will work in the `CityGraph` [repository](https://github.com/evisp/dsa-algorithms/tree/main/code/graphs) — all scaffold code is already there. Implement four methods in order.
 
 **Files to edit:** `CityGraph.java` only. Do not modify `City.java` or `Road.java`.
 
 
-## The Graph You Are Working With
+### The Graph You Are Working With
 
 All four tasks use the same Albanian city network. Study it before you start — you will trace your implementations against it by hand.
 
@@ -39,7 +115,7 @@ addRoad(korce,    gjirokaster,  80,  false);
 `City` objects carry `lat` and `lon` fields (decimal degrees) — you will need these in Task 3.
 
 
-## Task 1 — `reconstructPath`
+### Task 1 — `reconstructPath`
 
 ```java
 private List<City> reconstructPath(Map<City, City> prev, City start, City end)
@@ -71,7 +147,7 @@ private List<City> reconstructPath(Map<City, City> prev, City start, City end)
     After the loop, check whether the first element equals `start`. If not, no path exists.
 
 
-## Task 2 — `dijkstra`
+### Task 2 — `dijkstra`
 
 ```java
 public List<City> dijkstra(City start, City end)
@@ -111,7 +187,7 @@ public List<City> dijkstra(City start, City end)
     Stale entries will appear in the queue — ignore them by checking whether the popped cost matches `dist`.
 
 
-## Task 3 — `heuristic`
+### Task 3 — `heuristic`
 
 ```java
 private double heuristic(City a, City b)
@@ -133,7 +209,7 @@ private double heuristic(City a, City b)
 
     **Verify** (approximate values):
     ```java
-    heuristic(tirana, korce)      // ≈ 89.0 km
+    heuristic(tirana, korce)       // ≈ 89.0 km
     heuristic(tirana, gjirokaster) // ≈ 128.0 km
     heuristic(durres, gjirokaster) // ≈ 155.0 km
     ```
@@ -147,7 +223,7 @@ private double heuristic(City a, City b)
     The heuristic must never overestimate — road distance is always greater than or equal to straight-line distance, so Haversine is safe.
 
 
-## Task 4 — `aStar`
+### Task 4 — `aStar`
 
 ```java
 public List<City> aStar(City start, City end)
