@@ -119,6 +119,8 @@ nav:
     - Fundamentals of Graphs: graphs/graph-fundamentals.md
     - Graph Algorithms: graphs/graph-algorithms.md
     - Practice: graphs/practice.md
+    - Practice Dijkstra and A-Star: graphs/practice-2.md
+
 
       
   - Project:

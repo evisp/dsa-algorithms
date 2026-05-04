@@ -47,6 +47,11 @@ social networks, dependency resolution, and web crawlers.
   a range of graph types.  
   [Open →](practice.md){ .md-button .md-button--primary }
 
+- :material-pencil-box: **Practice**  
+  Hands-on problems focused on shortest path algorithms in a graph using Dijkstra and A-Star.  
+  [Open →](practice-2.md){ .md-button .md-button--primary }
+
+
 </div>
 
 > "Trees show hierarchy. Graphs show everything else — the messy, connected, cyclic world."
