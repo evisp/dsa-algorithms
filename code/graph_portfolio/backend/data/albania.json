@@ -1,0 +1,442 @@
+[
+  {
+    "name": "Tirana",
+    "type": "capital",
+    "lat": 41.3275,
+    "lng": 19.8187,
+    "roads": [
+      { "to": "Durrës",       "distance_km": 38,  "bidirectional": true },
+      { "to": "Elbasan",      "distance_km": 54,  "bidirectional": true },
+      { "to": "Shkodër",      "distance_km": 116, "bidirectional": true },
+      { "to": "Lezhë",        "distance_km": 76,  "bidirectional": true },
+      { "to": "Kavajë",       "distance_km": 40,  "bidirectional": true },
+      { "to": "Lushnjë",      "distance_km": 95,  "bidirectional": true },
+      { "to": "Krujë",        "distance_km": 32,  "bidirectional": true },
+      { "to": "Fushë-Krujë",  "distance_km": 20,  "bidirectional": true },
+      { "to": "Burrel",       "distance_km": 65,  "bidirectional": true },
+      { "to": "Rrogozhinë",   "distance_km": 60,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Durrës",
+    "type": "port",
+    "lat": 41.3246,
+    "lng": 19.4565,
+    "roads": [
+      { "to": "Tirana",       "distance_km": 38,  "bidirectional": true },
+      { "to": "Kavajë",       "distance_km": 28,  "bidirectional": true },
+      { "to": "Lushnjë",      "distance_km": 66,  "bidirectional": true },
+      { "to": "Lezhë",        "distance_km": 68,  "bidirectional": true },
+      { "to": "Fushë-Krujë",  "distance_km": 30,  "bidirectional": true },
+      { "to": "Rrogozhinë",   "distance_km": 40,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Shkodër",
+    "type": "city",
+    "lat": 42.0683,
+    "lng": 19.5126,
+    "roads": [
+      { "to": "Tirana",       "distance_km": 116, "bidirectional": true },
+      { "to": "Lezhë",        "distance_km": 55,  "bidirectional": true },
+      { "to": "Kukës",        "distance_km": 133, "bidirectional": true },
+      { "to": "Bajram Curri", "distance_km": 150, "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Lezhë",
+    "type": "town",
+    "lat": 41.7836,
+    "lng": 19.6436,
+    "roads": [
+      { "to": "Tirana",       "distance_km": 76,  "bidirectional": true },
+      { "to": "Shkodër",      "distance_km": 55,  "bidirectional": true },
+      { "to": "Durrës",       "distance_km": 68,  "bidirectional": true },
+      { "to": "Krujë",        "distance_km": 45,  "bidirectional": true },
+      { "to": "Laç",          "distance_km": 25,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Krujë",
+    "type": "town",
+    "lat": 41.5097,
+    "lng": 19.7950,
+    "roads": [
+      { "to": "Tirana",       "distance_km": 32,  "bidirectional": true },
+      { "to": "Lezhë",        "distance_km": 45,  "bidirectional": true },
+      { "to": "Fushë-Krujë",  "distance_km": 12,  "bidirectional": true },
+      { "to": "Laç",          "distance_km": 22,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Fushë-Krujë",
+    "type": "town",
+    "lat": 41.4783,
+    "lng": 19.7200,
+    "roads": [
+      { "to": "Tirana",       "distance_km": 20,  "bidirectional": true },
+      { "to": "Durrës",       "distance_km": 30,  "bidirectional": true },
+      { "to": "Krujë",        "distance_km": 12,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Laç",
+    "type": "town",
+    "lat": 41.6333,
+    "lng": 19.7167,
+    "roads": [
+      { "to": "Lezhë",        "distance_km": 25,  "bidirectional": true },
+      { "to": "Krujë",        "distance_km": 22,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Bajram Curri",
+    "type": "town",
+    "lat": 42.3583,
+    "lng": 20.0750,
+    "roads": [
+      { "to": "Shkodër",      "distance_km": 150, "bidirectional": true },
+      { "to": "Kukës",        "distance_km": 55,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Kukës",
+    "type": "town",
+    "lat": 42.0781,
+    "lng": 20.4228,
+    "roads": [
+      { "to": "Shkodër",      "distance_km": 133, "bidirectional": true },
+      { "to": "Peshkopi",     "distance_km": 65,  "bidirectional": true },
+      { "to": "Bajram Curri", "distance_km": 55,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Peshkopi",
+    "type": "town",
+    "lat": 41.6833,
+    "lng": 20.4333,
+    "roads": [
+      { "to": "Kukës",        "distance_km": 65,  "bidirectional": true },
+      { "to": "Elbasan",      "distance_km": 95,  "bidirectional": true },
+      { "to": "Burrel",       "distance_km": 55,  "bidirectional": true },
+      { "to": "Bulqizë",      "distance_km": 45,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Burrel",
+    "type": "town",
+    "lat": 41.6083,
+    "lng": 20.0083,
+    "roads": [
+      { "to": "Tirana",       "distance_km": 65,  "bidirectional": true },
+      { "to": "Peshkopi",     "distance_km": 55,  "bidirectional": true },
+      { "to": "Bulqizë",      "distance_km": 35,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Bulqizë",
+    "type": "town",
+    "lat": 41.4944,
+    "lng": 20.2247,
+    "roads": [
+      { "to": "Burrel",       "distance_km": 35,  "bidirectional": true },
+      { "to": "Peshkopi",     "distance_km": 45,  "bidirectional": true },
+      { "to": "Elbasan",      "distance_km": 50,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Kavajë",
+    "type": "town",
+    "lat": 41.1856,
+    "lng": 19.5567,
+    "roads": [
+      { "to": "Tirana",       "distance_km": 40,  "bidirectional": true },
+      { "to": "Durrës",       "distance_km": 28,  "bidirectional": true },
+      { "to": "Lushnjë",      "distance_km": 55,  "bidirectional": true },
+      { "to": "Rrogozhinë",   "distance_km": 18,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Rrogozhinë",
+    "type": "town",
+    "lat": 41.0742,
+    "lng": 19.6661,
+    "roads": [
+      { "to": "Tirana",       "distance_km": 60,  "bidirectional": true },
+      { "to": "Durrës",       "distance_km": 40,  "bidirectional": true },
+      { "to": "Kavajë",       "distance_km": 18,  "bidirectional": true },
+      { "to": "Lushnjë",      "distance_km": 35,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Elbasan",
+    "type": "city",
+    "lat": 41.1125,
+    "lng": 20.0822,
+    "roads": [
+      { "to": "Tirana",       "distance_km": 54,  "bidirectional": true },
+      { "to": "Berat",        "distance_km": 75,  "bidirectional": true },
+      { "to": "Gramsh",       "distance_km": 35,  "bidirectional": true },
+      { "to": "Korçë",        "distance_km": 95,  "bidirectional": true },
+      { "to": "Pogradec",     "distance_km": 85,  "bidirectional": true },
+      { "to": "Peshkopi",     "distance_km": 95,  "bidirectional": true },
+      { "to": "Bulqizë",      "distance_km": 50,  "bidirectional": true },
+      { "to": "Librazhd",     "distance_km": 30,  "bidirectional": true },
+      { "to": "Cerrik",       "distance_km": 25,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Librazhd",
+    "type": "town",
+    "lat": 41.1819,
+    "lng": 20.3172,
+    "roads": [
+      { "to": "Elbasan",      "distance_km": 30,  "bidirectional": true },
+      { "to": "Pogradec",     "distance_km": 55,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Cerrik",
+    "type": "town",
+    "lat": 41.0328,
+    "lng": 19.9906,
+    "roads": [
+      { "to": "Elbasan",      "distance_km": 25,  "bidirectional": true },
+      { "to": "Lushnjë",      "distance_km": 40,  "bidirectional": true },
+      { "to": "Gramsh",       "distance_km": 30,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Lushnjë",
+    "type": "town",
+    "lat": 40.9419,
+    "lng": 19.7050,
+    "roads": [
+      { "to": "Tirana",       "distance_km": 95,  "bidirectional": true },
+      { "to": "Durrës",       "distance_km": 66,  "bidirectional": true },
+      { "to": "Kavajë",       "distance_km": 55,  "bidirectional": true },
+      { "to": "Fier",         "distance_km": 32,  "bidirectional": true },
+      { "to": "Berat",        "distance_km": 45,  "bidirectional": true },
+      { "to": "Rrogozhinë",   "distance_km": 35,  "bidirectional": true },
+      { "to": "Cerrik",       "distance_km": 40,  "bidirectional": true },
+      { "to": "Divjakë",      "distance_km": 22,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Divjakë",
+    "type": "town",
+    "lat": 40.9997,
+    "lng": 19.5275,
+    "roads": [
+      { "to": "Lushnjë",      "distance_km": 22,  "bidirectional": true },
+      { "to": "Fier",         "distance_km": 38,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Berat",
+    "type": "city",
+    "lat": 40.7058,
+    "lng": 19.9522,
+    "roads": [
+      { "to": "Lushnjë",      "distance_km": 45,  "bidirectional": true },
+      { "to": "Fier",         "distance_km": 37,  "bidirectional": true },
+      { "to": "Elbasan",      "distance_km": 75,  "bidirectional": true },
+      { "to": "Gramsh",       "distance_km": 45,  "bidirectional": true },
+      { "to": "Çorovodë",     "distance_km": 55,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Gramsh",
+    "type": "town",
+    "lat": 40.8667,
+    "lng": 20.1833,
+    "roads": [
+      { "to": "Elbasan",      "distance_km": 35,  "bidirectional": true },
+      { "to": "Berat",        "distance_km": 45,  "bidirectional": true },
+      { "to": "Cerrik",       "distance_km": 30,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Çorovodë",
+    "type": "town",
+    "lat": 40.5036,
+    "lng": 20.2264,
+    "roads": [
+      { "to": "Berat",        "distance_km": 55,  "bidirectional": true },
+      { "to": "Përmet",       "distance_km": 65,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Fier",
+    "type": "city",
+    "lat": 40.7239,
+    "lng": 19.5567,
+    "roads": [
+      { "to": "Lushnjë",      "distance_km": 32,  "bidirectional": true },
+      { "to": "Berat",        "distance_km": 37,  "bidirectional": true },
+      { "to": "Vlorë",        "distance_km": 48,  "bidirectional": true },
+      { "to": "Tepelena",     "distance_km": 68,  "bidirectional": true },
+      { "to": "Divjakë",      "distance_km": 38,  "bidirectional": true },
+      { "to": "Patos",        "distance_km": 18,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Patos",
+    "type": "town",
+    "lat": 40.6897,
+    "lng": 19.6197,
+    "roads": [
+      { "to": "Fier",         "distance_km": 18,  "bidirectional": true },
+      { "to": "Ballsh",       "distance_km": 20,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Ballsh",
+    "type": "town",
+    "lat": 40.5967,
+    "lng": 19.7331,
+    "roads": [
+      { "to": "Patos",        "distance_km": 20,  "bidirectional": true },
+      { "to": "Selenicë",     "distance_km": 25,  "bidirectional": true },
+      { "to": "Tepelena",     "distance_km": 55,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Vlorë",
+    "type": "port",
+    "lat": 40.4667,
+    "lng": 19.4833,
+    "roads": [
+      { "to": "Fier",         "distance_km": 48,  "bidirectional": true },
+      { "to": "Tepelena",     "distance_km": 68,  "bidirectional": true },
+      { "to": "Himara",       "distance_km": 90,  "bidirectional": true },
+      { "to": "Selenicë",     "distance_km": 28,  "bidirectional": true },
+      { "to": "Orikum",       "distance_km": 14,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Orikum",
+    "type": "town",
+    "lat": 40.3283,
+    "lng": 19.4711,
+    "roads": [
+      { "to": "Vlorë",        "distance_km": 14,  "bidirectional": true },
+      { "to": "Himara",       "distance_km": 76,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Selenicë",
+    "type": "town",
+    "lat": 40.5333,
+    "lng": 19.6333,
+    "roads": [
+      { "to": "Vlorë",        "distance_km": 28,  "bidirectional": true },
+      { "to": "Ballsh",       "distance_km": 25,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Tepelena",
+    "type": "town",
+    "lat": 40.2958,
+    "lng": 20.0178,
+    "roads": [
+      { "to": "Fier",         "distance_km": 68,  "bidirectional": true },
+      { "to": "Vlorë",        "distance_km": 68,  "bidirectional": true },
+      { "to": "Gjirokastër",  "distance_km": 52,  "bidirectional": true },
+      { "to": "Përmet",       "distance_km": 42,  "bidirectional": true },
+      { "to": "Ballsh",       "distance_km": 55,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Gjirokastër",
+    "type": "city",
+    "lat": 40.0758,
+    "lng": 20.1389,
+    "roads": [
+      { "to": "Tepelena",     "distance_km": 52,  "bidirectional": true },
+      { "to": "Sarandë",      "distance_km": 55,  "bidirectional": true },
+      { "to": "Përmet",       "distance_km": 56,  "bidirectional": true },
+      { "to": "Delvinë",      "distance_km": 35,  "bidirectional": true },
+      { "to": "Ersekë",       "distance_km": 70,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Përmet",
+    "type": "town",
+    "lat": 40.2333,
+    "lng": 20.3519,
+    "roads": [
+      { "to": "Gjirokastër",  "distance_km": 56,  "bidirectional": true },
+      { "to": "Tepelena",     "distance_km": 42,  "bidirectional": true },
+      { "to": "Korçë",        "distance_km": 87,  "bidirectional": true },
+      { "to": "Çorovodë",     "distance_km": 65,  "bidirectional": true },
+      { "to": "Ersekë",       "distance_km": 45,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Ersekë",
+    "type": "town",
+    "lat": 40.3333,
+    "lng": 20.6833,
+    "roads": [
+      { "to": "Korçë",        "distance_km": 65,  "bidirectional": true },
+      { "to": "Gjirokastër",  "distance_km": 70,  "bidirectional": true },
+      { "to": "Përmet",       "distance_km": 45,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Sarandë",
+    "type": "port",
+    "lat": 39.8756,
+    "lng": 20.0053,
+    "roads": [
+      { "to": "Gjirokastër",  "distance_km": 55,  "bidirectional": true },
+      { "to": "Himara",       "distance_km": 55,  "bidirectional": true },
+      { "to": "Delvinë",      "distance_km": 18,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Delvinë",
+    "type": "town",
+    "lat": 39.9481,
+    "lng": 20.0953,
+    "roads": [
+      { "to": "Sarandë",      "distance_km": 18,  "bidirectional": true },
+      { "to": "Gjirokastër",  "distance_km": 35,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Himara",
+    "type": "town",
+    "lat": 40.1008,
+    "lng": 19.7458,
+    "roads": [
+      { "to": "Vlorë",        "distance_km": 90,  "bidirectional": true },
+      { "to": "Sarandë",      "distance_km": 55,  "bidirectional": true },
+      { "to": "Orikum",       "distance_km": 76,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Korçë",
+    "type": "city",
+    "lat": 40.6186,
+    "lng": 20.7808,
+    "roads": [
+      { "to": "Elbasan",      "distance_km": 95,  "bidirectional": true },
+      { "to": "Pogradec",     "distance_km": 45,  "bidirectional": true },
+      { "to": "Përmet",       "distance_km": 87,  "bidirectional": true },
+      { "to": "Ersekë",       "distance_km": 65,  "bidirectional": true }
+    ]
+  },
+  {
+    "name": "Pogradec",
+    "type": "town",
+    "lat": 40.9025,
+    "lng": 20.6522,
+    "roads": [
+      { "to": "Korçë",        "distance_km": 45,  "bidirectional": true },
+      { "to": "Elbasan",      "distance_km": 85,  "bidirectional": true },
+      { "to": "Librazhd",     "distance_km": 55,  "bidirectional": true }
+    ]
+  }
+]

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Albania Pathfinder</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- Leaflet -->
+  <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Variables ─────────────────────────────────────── */
+    :root {
+      --bg:           #0d0f14;
+      --surface:      #13161e;
+      --surface-2:    #1a1e2a;
+      --border:       #252938;
+      --text:         #e8eaf0;
+      --text-muted:   #5a5f75;
+      --accent:       #4f8aff;
+      --accent-glow:  rgba(79, 138, 255, 0.15);
+      --visited:      #2a2f3f;
+      --visited-dot:  #3a4060;
+      --path:         #4f8aff;
+      --path-glow:    rgba(79,138,255,0.4);
+      --success:      #34d399;
+      --warning:      #fbbf24;
+      --danger:       #f87171;
+      --font-head:    'Syne', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+    }
+
+    /* ── Reset & Base ──────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-head);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Top bar ───────────────────────────────────────── */
+    .topbar {
+      height: 52px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 1.25rem;
+      gap: 0.75rem;
+      flex-shrink: 0;
+      z-index: 1000;
+    }
+
+    .topbar-logo {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .topbar-logo span {
+      color: var(--accent);
+    }
+
+    .topbar-badge {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      background: var(--accent-glow);
+      color: var(--accent);
+      border: 1px solid rgba(79,138,255,0.3);
+      border-radius: 4px;
+      padding: 2px 7px;
+    }
+
+    /* ── Layout ────────────────────────────────────────── */
+    .main-layout {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* ── Sidebar ───────────────────────────────────────── */
+    .sidebar {
+      width: 320px;
+      flex-shrink: 0;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      z-index: 100;
+    }
+
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-track { background: transparent; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .sidebar-section {
+      padding: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+    }
+
+    /* ── Form controls ─────────────────────────────────── */
+    .form-select,
+    .form-control {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      border-radius: 8px;
+      padding: 0.55rem 0.85rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-select:focus,
+    .form-control:focus {
+      background: var(--surface-2);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+      color: var(--text);
+      outline: none;
+    }
+
+    .form-select option {
+      background: var(--surface-2);
+      color: var(--text);
+    }
+
+    .form-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+    }
+
+    /* ── Algorithm pills ───────────────────────────────── */
+    .algo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    .algo-pill {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      border-radius: 8px;
+      padding: 0.6rem 0.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.8rem;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .algo-pill:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    .algo-pill.active {
+      background: var(--accent-glow);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .algo-pill .algo-tag {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+      font-weight: 400;
+    }
+
+    .algo-pill.active .algo-tag { color: var(--accent); opacity: 0.7; }
+
+    /* ── Run button ────────────────────────────────────── */
+    .btn-run {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.7rem;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-run:hover { filter: brightness(1.15); transform: translateY(-1px); }
+    .btn-run:active { transform: translateY(0); }
+    .btn-run:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+    .btn-clear {
+      width: 100%;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.55rem;
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .btn-clear:hover {
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+
+    /* ── Results panel ─────────────────────────────────── */
+    .result-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      display: none;
+    }
+
+    .result-card.visible { display: block; animation: fadeSlideIn 0.3s ease; }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .result-stat:last-child { margin-bottom: 0; }
+
+    .result-stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .result-stat-value {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .result-stat-value.accent { color: var(--accent); }
+    .result-stat-value.success { color: var(--success); }
+
+    .path-stops {
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .path-stop {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.3rem 0;
+      font-size: 0.8rem;
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .path-stop.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .path-stop-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .path-stop:first-child .path-stop-dot { background: var(--success); }
+    .path-stop:last-child  .path-stop-dot { background: var(--warning); }
+
+    .path-stop-line {
+      width: 1px;
+      height: 14px;
+      background: var(--border);
+      margin-left: 3.5px;
+      flex-shrink: 0;
+    }
+
+    /* ── Status bar ────────────────────────────────────── */
+    .status-bar {
+      padding: 0.6rem 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-top: 1px solid var(--border);
+      min-height: 36px;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--success);
+      flex-shrink: 0;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    /* ── Map ───────────────────────────────────────────── */
+    #map {
+      flex: 1;
+      background: var(--bg);
+    }
+
+    /* Leaflet overrides */
+    .leaflet-container { background: #0d1117 !important; font-family: var(--font-head); }
+    .leaflet-tile { filter: brightness(0.75) saturate(0.6) hue-rotate(190deg); }
+
+    .leaflet-popup-content-wrapper {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      color: var(--text);
+      font-family: var(--font-head);
+    }
+
+    .leaflet-popup-tip { background: var(--surface); }
+    .leaflet-popup-content { margin: 10px 14px; font-size: 0.82rem; }
+    .leaflet-popup-content strong { color: var(--accent); font-weight: 700; }
+    .leaflet-popup-content small { color: var(--text-muted); font-family: var(--font-mono); font-size: 0.65rem; }
+
+    /* ── City markers ──────────────────────────────────── */
+    .city-marker {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 2px solid var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .city-marker.capital {
+      width: 16px;
+      height: 16px;
+      border-color: var(--accent);
+      background: var(--accent-glow);
+    }
+
+    .city-marker.port    { border-color: var(--success); }
+    .city-marker.visited { background: var(--visited-dot); border-color: #4a5070; animation: visitPulse 0.4s ease; }
+    .city-marker.on-path { border-color: var(--accent); background: var(--accent); box-shadow: 0 0 10px var(--path-glow); }
+
+    @keyframes visitPulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.8); opacity: 0.6; }
+      100% { transform: scale(1); }
+    }
+
+    /* ── Tooltip ───────────────────────────────────────── */
+    .leaflet-tooltip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 6px;
+      padding: 4px 8px;
+      box-shadow: none;
+    }
+
+    .leaflet-tooltip::before { display: none; }
+
+    /* ── Legend ────────────────────────────────────────── */
+    .map-legend {
+      position: absolute;
+      bottom: 24px;
+      right: 12px;
+      z-index: 500;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 0.72rem;
+      min-width: 140px;
+    }
+
+    .legend-title {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+      color: var(--text-muted);
+    }
+
+    .legend-row:last-child { margin-bottom: 0; }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid;
+      flex-shrink: 0;
+    }
+
+    .legend-line {
+      width: 18px;
+      height: 2px;
+      border-radius: 1px;
+      flex-shrink: 0;
+    }
+
+    /* ── Loading overlay ───────────────────────────────── */
+    .loading-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(13,15,20,0.7);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+
+    .loading-overlay.visible { opacity: 1; pointer-events: all; }
+
+    .loading-spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Error toast ───────────────────────────────────── */
+    .toast-error {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--surface);
+      border: 1px solid var(--danger);
+      color: var(--danger);
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      z-index: 9999;
+      opacity: 0;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .toast-error.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Top bar ──────────────────────────────────────── -->
+  <div class="topbar">
+    <div class="topbar-logo">Albania <span>Pathfinder</span></div>
+    <div class="topbar-badge">v1.0</div>
+  </div>
+
+  <!-- ── Main layout ──────────────────────────────────── -->
+  <div class="main-layout position-relative">
+
+    <!-- ── Sidebar ────────────────────────────────────── -->
+    <aside class="sidebar">
+
+      <!-- Cities -->
+      <div class="sidebar-section">
+        <div class="section-label">Route</div>
+
+        <div class="mb-3">
+          <label class="form-label">From</label>
+          <select class="form-select" id="select-from">
+            <option value="">Select city...</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="form-label">To</label>
+          <select class="form-select" id="select-to">
+            <option value="">Select city...</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Algorithm -->
+      <div class="sidebar-section">
+        <div class="section-label">Algorithm</div>
+        <div class="algo-grid">
+          <div class="algo-pill active" data-algo="dijkstra">
+            Dijkstra
+            <span class="algo-tag">shortest path</span>
+          </div>
+          <div class="algo-pill" data-algo="astar">
+            A*
+            <span class="algo-tag">heuristic</span>
+          </div>
+          <div class="algo-pill" data-algo="bfs">
+            BFS
+            <span class="algo-tag">hop count</span>
+          </div>
+          <div class="algo-pill" data-algo="dfs">
+            DFS
+            <span class="algo-tag">depth first</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Run -->
+      <div class="sidebar-section">
+        <button class="btn-run" id="btn-run" disabled>
+          <i class="bi bi-play-fill"></i> Find Route
+        </button>
+        <button class="btn-clear" id="btn-clear">
+          <i class="bi bi-x-circle"></i> Clear
+        </button>
+      </div>
+
+      <!-- Results -->
+      <div class="sidebar-section">
+        <div class="section-label">Result</div>
+        <div class="result-card" id="result-card">
+
+          <div class="result-stat">
+            <span class="result-stat-label">Algorithm</span>
+            <span class="result-stat-value accent" id="res-algo">—</span>
+          </div>
+          <div class="result-stat">
+            <span class="result-stat-label">Distance</span>
+            <span class="result-stat-value success" id="res-distance">—</span>
+          </div>
+          <div class="result-stat">
+            <span class="result-stat-label">Cities visited</span>
+            <span class="result-stat-value" id="res-visited">—</span>
+          </div>
+          <div class="result-stat">
+            <span class="result-stat-label">Path length</span>
+            <span class="result-stat-value" id="res-hops">—</span>
+          </div>
+
+          <div class="path-stops" id="path-stops"></div>
+        </div>
+      </div>
+
+      <!-- Status -->
+      <div class="status-bar mt-auto">
+        <div class="status-dot"></div>
+        <span id="status-text">Loading graph...</span>
+      </div>
+
+    </aside>
+
+    <!-- ── Map ────────────────────────────────────────── -->
+    <div id="map"></div>
+
+    <!-- Legend -->
+    <div class="map-legend">
+      <div class="legend-title">Legend</div>
+      <div class="legend-row">
+        <div class="legend-dot" style="border-color: var(--accent); background: var(--accent-glow);"></div>
+        Capital
+      </div>
+      <div class="legend-row">
+        <div class="legend-dot" style="border-color: var(--success);"></div>
+        Port city
+      </div>
+      <div class="legend-row">
+        <div class="legend-dot" style="border-color: var(--text-muted);"></div>
+        Town
+      </div>
+      <div class="legend-row">
+        <div class="legend-line" style="background: var(--border);"></div>
+        Road
+      </div>
+      <div class="legend-row">
+        <div class="legend-line" style="background: var(--accent);"></div>
+        Shortest path
+      </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+      <div class="loading-spinner"></div>
+    </div>
+
+  </div>
+
+  <!-- Error toast -->
+  <div class="toast-error" id="toast-error"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>
