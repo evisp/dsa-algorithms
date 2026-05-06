@@ -26,11 +26,7 @@ These sprints help you build strong habits: write clear solutions, test them car
 
 - :material-hammer-wrench: **Sprint 2**  
   This page will be added when the time comes. For now, it’s “still compiling”… patiently.  
-  [Open →](sprint-2.md){ .md-button }
-
-- :material-trophy-outline: **Sprint 3**  
-  Coming later in the course. We promise it’s not an infinite loop; it just needs one more run.  
-  [Open →](sprint-3.md){ .md-button }
+  [Open →](final-project.md){ .md-button }
 
 </div>
 

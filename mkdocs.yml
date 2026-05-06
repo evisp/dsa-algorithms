@@ -126,6 +126,6 @@ nav:
   - Project:
       - Overview: project/index.md
       - Sprint 1: project/sprint-1.md
-      - Sprint 2: project/sprint-2.md
-      - Sprint 3: project/sprint-3.md
       - Friendly competition: project/competition.md
+      - Final Project: project/final-project.md
+
