@@ -5,12 +5,6 @@ Use this page to practice linear data structures, such as arrays, lists, stacks,
 !!! info "Goal"
     Write algorithms as clear, testable steps before writing any Java. 
 
-## Jump to a topic
-- [A) ArrayList vs LinkedList (timing experiment)](#a-arraylist-vs-linkedlist-timing-experiment)
-- [B) Arrays practice (classic problems)](#b-arrays-practice-classic-problems)
-- [C) Stacks and Queues (Banking Practice)](#c-stacks-and-queues-banking-practice)
-
-
 !!! tip "Rule for discussion"
     If your algorithm has ties, empty input, or invalid input cases, decide the behavior and write it down.
 

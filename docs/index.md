@@ -45,8 +45,7 @@ A substantial project where you apply the course concepts in three sprints-each 
 
 [Overview →](project/index.md) ·
 [Sprint 1 →](project/sprint-1.md) ·
-[Sprint 2 →](project/sprint-2.md) ·
-[Sprint 3](project/sprint-3.md)
+[Final Project →](project/final-project.md) ·
 
 </div>
 

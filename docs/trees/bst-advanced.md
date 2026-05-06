@@ -203,7 +203,7 @@ public Product findMin() {
 
 ## 5) Deletion in Context
 
-Deletion is covered in theory on the [BST Operations page](LINK). Here the focus is on **Case 3 — two children**, which is the only case with non-obvious code.
+Deletion is covered in theory on the BST Operations page. Here the focus is on **Case 3 — two children**, which is the only case with non-obvious code.
 
 The strategy: don't actually remove the node. Instead, find its **in-order successor** (the smallest value in its right subtree), copy that value up, then delete the successor from its original spot.
 
