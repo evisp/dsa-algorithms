@@ -79,8 +79,103 @@ A food delivery platform needs to route drivers from restaurants to customers th
     For A*, straight-line geographic distance is always a valid lower bound on road travel distance.
 
 
+## Block 2 — A\* on a Grid
 
-## Block 2 — Implementation
+
+### The Grid
+
+Movement is **4-directional** (up, down, left, right). Each step costs **1**. Grey cells are walls — they cannot be entered. The agent starts at **S = (0,0)** and must reach **G = (4,4)**. Coordinates are written as **(row, col)**.
+
+```
+        col 0   col 1   col 2   col 3   col 4
+row 0  [  S  ] [     ] [  ■  ] [  ■  ] [     ]
+row 1  [  ■  ] [     ] [  ■  ] [     ] [     ]
+row 2  [     ] [     ] [  ■  ] [     ] [  ■  ]
+row 3  [     ] [  ■  ] [     ] [     ] [     ]
+row 4  [     ] [     ] [     ] [  ■  ] [  G  ]
+```
+
+Walls: **(0,2) (0,3) (1,0) (1,2) (2,2) (2,4) (3,1) (4,3)**
+
+
+### Q1 — Graph Model
+
+What are the **nodes**? What are the **edges**? Is the graph **directed or undirected**? Is it **weighted or unweighted**? What data structure — adjacency list or adjacency matrix — would you use to represent this graph, and why?
+
+
+### Q2 — The Heuristic
+
+Write a concrete heuristic **h(n)** for A\* on this grid. Justify in one sentence why it is **admissible**.
+
+
+### Q3 — Computing f(n)
+
+Complete the missing values in the table. The nodes are listed along one possible path from S to G.
+
+| Node     | g(n) | h(n) | f(n) |
+|----------|------|------|------|
+| (0,0)    | 0    |      |      |
+| (0,1)    | 1    |      |      |
+| (1,1)    | 2    |      |      |
+| (2,1)    |      |      |      |
+| (2,0)    |      |      |      |
+| (3,0)    |      |      |      |
+| (4,0)    |      |      |      |
+| (4,1)    |      |      |      |
+| (4,2)    |      |      |      |
+| (3,3)    |      |      |      |
+| (4,4)    |      | 0    |      |
+
+What pattern do you observe across the f(n) column on this path? What does this tell you about the heuristic?
+
+
+### Q4 — Open Set After First Expansion
+
+A\* expands S = (0,0). List every node added to the open set, and write their **g**, **h**, and **f** values. Which node gets expanded next, and why?
+
+
+### Q5 — Dijkstra vs A\*
+
+Both Dijkstra and A\* would find the optimal path on this grid. What is the concrete difference in how they order the open set? On a grid this size, which would expand more nodes before reaching G, and why?
+
+### Q6 — Zero Heuristic
+
+If you set **h(n) = 0** for every node, what algorithm does A\* reduce to? What does this imply about the relationship between the two algorithms?
+
+
+### Q7 — Inadmissible Heuristic
+
+A student replaces the heuristic with **h(n) = 3 × Manhattan distance**.
+
+1. Is this admissible?
+2. What guarantee about the result does A\* lose?
+3. What does A\* gain?
+
+
+### Q8 — Consistency
+
+A heuristic is called **consistent** if for every node **n** and every neighbour **n'**, the condition `h(n) ≤ cost(n, n') + h(n')` holds.
+
+1. Does Manhattan distance satisfy this condition on this grid? Show one concrete example using nodes from the grid.
+2. What property of A\*'s expansion order does consistency guarantee?
+
+
+### Q9 — No Path
+
+Suppose walls are added at **(2,3)** and **(3,3)**, completely cutting off G from S.
+
+1. How does A\* detect that no path exists?
+2. What must your implementation return in this case?
+3. At what exact point in the algorithm does A\* know the search is over?
+
+### Q10 — Visited Set
+
+Dijkstra's algorithm on a graph with non-negative weights does not require a visited set to guarantee correctness. A\* does.
+
+1. Why does A\* need a visited set?
+2. What could go wrong without it, given the grid above?
+
+## Block 3 — Implementation
 
 You will work in the `CityGraph` [repository](https://github.com/evisp/dsa-algorithms/tree/main/code/graphs) — all scaffold code is already there. Implement four methods in order.
 
