@@ -537,13 +537,6 @@
     <h2>Requirements</h2>
     <p>These apply to all projects, regardless of track.</p>
 
-    <h3>Data structure</h3>
-    <ul class="req-list">
-      <li><span class="req-check"></span>Implement your BST or Graph <strong>from scratch</strong> in Java, or any other language of choice.</li>
-      <li><span class="req-check"></span>Your implementation must live in a clearly named package, e.g. <code>dsa.project.tree</code> or <code>dsa.project.graph</code>.</li>
-      <li><span class="req-check"></span>Handle edge cases: empty structure, element not found, duplicate keys — without crashing.</li>
-    </ul>
-
     <h3>Core operations</h3>
     <ul class="req-list">
       <li><span class="req-check"></span><strong>BST:</strong> insert, delete, search, at least one traversal (in-order), and one domain-specific query (range, top-K, min/max).</li>
