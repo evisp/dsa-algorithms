@@ -416,7 +416,7 @@
     <h2>Goal</h2>
     <p>
       This project is your chance to take everything you have learned about data structures and apply it
-      to a problem that feels real. You will design and build a Java application around either a
+      to a problem that feels real. You will design and build an application around either a
       Binary Search Tree or a Graph — choosing the right structure, implementing it from scratch,
       and making it do something useful.
     </p>
@@ -539,7 +539,7 @@
 
     <h3>Data structure</h3>
     <ul class="req-list">
-      <li><span class="req-check"></span>Implement your BST or Graph <strong>from scratch</strong> in Java. Do not use <code>TreeMap</code>, <code>PriorityQueue</code>, or any library collection as the underlying structure.</li>
+      <li><span class="req-check"></span>Implement your BST or Graph <strong>from scratch</strong> in Java, or any other language of choice.</li>
       <li><span class="req-check"></span>Your implementation must live in a clearly named package, e.g. <code>dsa.project.tree</code> or <code>dsa.project.graph</code>.</li>
       <li><span class="req-check"></span>Handle edge cases: empty structure, element not found, duplicate keys — without crashing.</li>
     </ul>
@@ -559,7 +559,7 @@
     <h3>Code quality</h3>
     <ul class="req-list">
       <li><span class="req-check"></span>Meaningful class and variable names throughout.</li>
-      <li><span class="req-check"></span>Each public method has a short Javadoc comment.</li>
+      <li><span class="req-check"></span>Each public method has a short comment.</li>
     </ul>
 
     <div class="admonition tip">
@@ -581,9 +581,8 @@
 
       <div class="submit-card">
         <h4>01 — Source code</h4>
-        <p>A zip of your Eclipse or IntelliJ project, <em>or</em> a link to a public GitHub repository.</p>
+        <p>A zip of your project, <em>or</em> a link to a public GitHub repository.</p>
         <ul>
-          <li>Must run by starting <strong>Main.java</strong> with no extra setup</li>
           <li>Include all team members' names in a top-level <strong>README.md</strong></li>
         </ul>
       </div>
